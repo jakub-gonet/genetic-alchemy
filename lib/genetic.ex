@@ -1,6 +1,8 @@
 defmodule Genetic do
-  def populate(number, allowed_values, length) when number >= 0 and length >= 0,
+  def populate(number, allowed_values, length) when number > 0 and length > 0,
     do: _populate(number, allowed_values, length, %Chromosome{})
+
+  def populate(_, _, _), do: []
 
   def crossover(population)
   def mutate(population, chance)

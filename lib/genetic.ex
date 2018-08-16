@@ -4,7 +4,14 @@ defmodule Genetic do
 
   def populate(_, _, _), do: []
 
-  def crossover(population)
+  def crossover(population) do
+    population
+    |> Enum.chunk_every(2)
+    |> Flow.from_enumerable()
+    |> Flow.map(&crossover_two(&1))
+    |> Enum.to_list()
+  end
+
   def mutate(population, chance)
   def calc_fitness(population, fitness_func)
 

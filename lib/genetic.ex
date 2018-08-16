@@ -12,4 +12,6 @@ defmodule Genetic do
     genes = for _ <- 1..length, do: Enum.random(allowed_values)
     %Chromosome{genes: genes}
   end
+
+  defp crossover_point_from(length), do: Enum.random(1..length)
 end

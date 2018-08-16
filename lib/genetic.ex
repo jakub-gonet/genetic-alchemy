@@ -20,7 +20,7 @@ defmodule Genetic do
     %Chromosome{genes: genes}
   end
 
-  def crossover_two([%Chromosome{genes: first}, %Chromosome{genes: second}]) do
+  defp crossover_two([%Chromosome{genes: first}, %Chromosome{genes: second}]) do
     merge_swapped = fn {a_1, a_2}, {b_1, b_2} -> {a_1 ++ b_2, b_1 ++ a_2} end
 
     crossover_point = crossover_point_from(length(first))

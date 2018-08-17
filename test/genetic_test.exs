@@ -5,8 +5,8 @@ defmodule GeneticTest do
   describe "Genetic.populate/3" do
     test "create population" do
       assert Genetic.populate(2, 1..1, 2) == [
-               %Chromosome{genes: [1, 1]},
-               %Chromosome{genes: [1, 1]}
+               %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 1}]},
+               %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 1}]}
              ]
     end
 

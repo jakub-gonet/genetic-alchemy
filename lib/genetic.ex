@@ -8,7 +8,7 @@ defmodule Genetic do
     population
     |> Enum.chunk_every(2)
     |> Flow.from_enumerable()
-    |> Flow.map(&crossover_two(&1))
+    |> Flow.flat_map(&crossover_two(&1))
     |> Enum.to_list()
   end
 

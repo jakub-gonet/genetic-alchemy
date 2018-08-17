@@ -1,3 +1,3 @@
 defmodule Gene do
-  defstruct [:value]
+  defstruct [:v]
 end

@@ -75,4 +75,20 @@ defmodule GeneticTest do
              |> Enum.all?(&(%Gene{v: 0} in &1))
     end
   end
+
+  describe "Genetic.calc_fitness/2" do
+    test "const fitness function output is the same for all inputs" do
+      const_max_fitness = fn chrom -> 1 end
+
+      population = [
+        %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 2}, %Gene{v: 3}]},
+        %Chromosome{genes: [%Gene{v: 10}, %Gene{v: 20}, %Gene{v: 30}]},
+        %Chromosome{genes: [%Gene{v: 100}, %Gene{v: 200}, %Gene{v: 300}]}
+      ]
+
+      assert population
+             |> Genetic.calc_fitness(const_max_fitness)
+             |> Enum.all?(&(&1 == 1))
+    end
+  end
 end

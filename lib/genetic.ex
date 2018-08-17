@@ -12,7 +12,10 @@ defmodule Genetic do
     |> Enum.to_list()
   end
 
-  def mutate(population, chance)
+  def mutate(population, allowed_values, chance) do
+    Enum.map(population, &mutate_one(&1, allowed_values, chance))
+  end
+
   def calc_fitness(population, fitness_func)
 
   defp generate_random_chromosome(allowed_values, length) do

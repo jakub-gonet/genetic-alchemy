@@ -31,7 +31,7 @@ defmodule Genetic do
     [%Chromosome{genes: first_m}, %Chromosome{genes: second_m}]
   end
 
-  def crossover_two(first), do: first
+  defp crossover_two(first), do: first
 
   defp crossover_point_from(length), do: Enum.random(1..length)
 end

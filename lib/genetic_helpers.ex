@@ -1,4 +1,4 @@
-defmodule Genetic do
+defmodule GeneticAlgorithm.Helpers do
   def populate(number, allowed_values, length) when number > 0 and length > 0 do
     Flow.from_enumerable(1..number)
     |> Flow.reduce(fn -> [] end, fn _, acc ->

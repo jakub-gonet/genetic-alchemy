@@ -1,5 +1,5 @@
 defmodule GeneticTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   doctest Genetic
 
   describe "Genetic.populate/3" do

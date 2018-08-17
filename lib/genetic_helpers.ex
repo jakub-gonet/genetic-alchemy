@@ -13,7 +13,7 @@ defmodule GeneticAlgorithm.Helpers do
     population
     |> Enum.chunk_every(2)
     |> Flow.from_enumerable()
-    |> Flow.flat_map(&crossover_two(&1))
+    |> Flow.flat_map(&crossover_two/1)
     |> Enum.to_list()
   end
 
@@ -27,7 +27,7 @@ defmodule GeneticAlgorithm.Helpers do
   def calc_fitness(population, fitness_func) do
     population
     |> Flow.from_enumerable()
-    |> Flow.map(&fitness_func.(&1))
+    |> Flow.map(fitness_func)
     |> Enum.to_list()
   end
 

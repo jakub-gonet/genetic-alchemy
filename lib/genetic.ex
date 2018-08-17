@@ -1,6 +1,11 @@
 defmodule Genetic do
-  def populate(number, allowed_values, length) when number > 0 and length > 0,
-    do: for(_ <- 1..number, do: generate_random_chromosome(allowed_values, length))
+  def populate(number, allowed_values, length) when number > 0 and length > 0 do
+    Flow.from_enumerable(1..number)
+    |> Flow.reduce(fn -> [] end, fn _, acc ->
+      [generate_random_chromosome(allowed_values, length) | acc]
+    end)
+    |> Enum.to_list()
+  end
 
   def populate(_, _, _), do: []
 
@@ -13,10 +18,18 @@ defmodule Genetic do
   end
 
   def mutate(population, allowed_values, chance) do
-    Enum.map(population, &mutate_one(&1, allowed_values, chance))
+    population
+    |> Flow.from_enumerable()
+    |> Flow.map(&mutate_one(&1, allowed_values, chance))
+    |> Enum.to_list()
   end
 
-  def calc_fitness(population, fitness_func), do: Enum.map(population, &fitness_func.(&1))
+  def calc_fitness(population, fitness_func) do
+    population
+    |> Flow.from_enumerable()
+    |> Flow.map(&fitness_func.(&1))
+    |> Enum.to_list()
+  end
 
   defp generate_random_chromosome(allowed_values, length) do
     genes = for _ <- 1..length, do: %Gene{v: Enum.random(allowed_values)}

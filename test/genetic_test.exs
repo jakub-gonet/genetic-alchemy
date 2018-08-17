@@ -50,4 +50,29 @@ defmodule GeneticTest do
       assert Genetic.crossover(population) == population
     end
   end
+
+  describe "Genetic.mutate/3" do
+    test "0% chance doesn't change any chromosome" do
+      population = [
+        %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 2}, %Gene{v: 3}]},
+        %Chromosome{genes: [%Gene{v: 10}, %Gene{v: 20}, %Gene{v: 30}]},
+        %Chromosome{genes: [%Gene{v: 100}, %Gene{v: 200}, %Gene{v: 300}]}
+      ]
+
+      assert Genetic.mutate(population, [1], 0) == population
+    end
+
+    test "100% chance always change every chromosome" do
+      population = [
+        %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 2}, %Gene{v: 3}]},
+        %Chromosome{genes: [%Gene{v: 10}, %Gene{v: 20}, %Gene{v: 30}]},
+        %Chromosome{genes: [%Gene{v: 100}, %Gene{v: 200}, %Gene{v: 300}]}
+      ]
+
+      assert population
+             |> Genetic.mutate([0], 1)
+             |> Enum.map(& &1.genes)
+             |> Enum.all?(&(%Gene{v: 0} in &1))
+    end
+  end
 end

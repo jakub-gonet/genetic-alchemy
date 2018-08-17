@@ -16,7 +16,7 @@ defmodule Genetic do
   def calc_fitness(population, fitness_func)
 
   defp generate_random_chromosome(allowed_values, length) do
-    genes = for _ <- 1..length, do: Enum.random(allowed_values)
+    genes = for _ <- 1..length, do: %Gene{v: Enum.random(allowed_values)}
     %Chromosome{genes: genes}
   end
 

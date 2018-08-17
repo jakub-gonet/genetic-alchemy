@@ -36,8 +36,13 @@ defmodule Genetic do
   defp pivot_from_list(list), do: Enum.random(0..(length(list) - 1))
 
   defp mutate_one(%Chromosome{genes: genes}, allowed_values, chance) do
-    if :rand.uniform() >= chance do
-      List.replace_at(genes, pivot_from_list(genes), Enum.random(allowed_values))
+    genes =
+      if :rand.uniform() <= chance do
+        random_gene = %Gene{v: Enum.random(allowed_values)}
+        random_pos = pivot_from_list(genes)
+        List.replace_at(genes, random_pos, random_gene)
+      else
+        genes
     end
 
     %Chromosome{genes: genes}

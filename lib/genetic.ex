@@ -16,7 +16,7 @@ defmodule Genetic do
     Enum.map(population, &mutate_one(&1, allowed_values, chance))
   end
 
-  def calc_fitness(population, fitness_func)
+  def calc_fitness(population, fitness_func), do: Enum.map(population, &fitness_func.(&1))
 
   defp generate_random_chromosome(allowed_values, length) do
     genes = for _ <- 1..length, do: %Gene{v: Enum.random(allowed_values)}

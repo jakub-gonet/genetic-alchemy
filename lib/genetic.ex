@@ -33,5 +33,13 @@ defmodule Genetic do
 
   defp crossover_two(first), do: first
 
-  defp pivot_from_list(list), do: Enum.random(0..length(list)-1)
+  defp pivot_from_list(list), do: Enum.random(0..(length(list) - 1))
+
+  defp mutate_one(%Chromosome{genes: genes}, allowed_values, chance) do
+    if :rand.uniform() >= chance do
+      List.replace_at(genes, pivot_from_list(genes), Enum.random(allowed_values))
+    end
+
+    %Chromosome{genes: genes}
+  end
 end

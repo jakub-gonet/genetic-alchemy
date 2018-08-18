@@ -24,11 +24,13 @@ defmodule GeneticAlgorithm.Helpers do
     |> Enum.to_list()
   end
 
-  def calc_fitness(population, fitness_func) do
+  def select_most_fitting(population, number, fitness_func) do
     population
     |> Flow.from_enumerable()
-    |> Flow.map(fitness_func)
-    |> Enum.to_list()
+    |> Flow.map(&{&1, fitness_func.(&1)})
+    |> Enum.sort_by(fn {_, fitness} -> fitness end)
+    |> Enum.map(fn {chrom, _} -> chrom end)
+    |> Enum.take(number)
   end
 
   defp generate_random_chromosome(allowed_values, length) do

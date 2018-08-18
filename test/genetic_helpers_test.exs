@@ -77,10 +77,8 @@ defmodule GeneticHelpersTest do
     end
   end
 
-  describe "GeneticAlgorithm.Helpers3.calc_fitness/2" do
-    test "const fitness function output is the same for all inputs" do
-      const_max_fitness = fn chrom -> 1 end
-
+  describe "GeneticAlgorithm.Helpers.select_most_fitting/3" do
+    test "const fitness takes any n chromosomes" do
       population = [
         %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 2}, %Gene{v: 3}]},
         %Chromosome{genes: [%Gene{v: 10}, %Gene{v: 20}, %Gene{v: 30}]},
@@ -88,8 +86,8 @@ defmodule GeneticHelpersTest do
       ]
 
       assert population
-             |> Helpers.calc_fitness(const_max_fitness)
-             |> Enum.all?(&(&1 == 1))
+             |> Helpers.select_most_fitting(3, fn x -> 0 end)
+             |> Enum.all?(&(&1 in population))
     end
   end
 end

@@ -1,3 +1,3 @@
 defmodule Chromosome do
-  defstruct genes: []
+  defstruct genes: [], fitness: 0
 end

@@ -38,6 +38,10 @@ defmodule GeneticAlgorithm.Helpers do
     %Chromosome{genes: genes}
   end
 
+  defp create_chromosome(genes, fitness_func) do
+    %Chromosome{genes: genes, fitness: fitness_func.(genes)}
+  end
+
   defp crossover_two([%Chromosome{genes: first}, %Chromosome{genes: second}]) do
     merge_swapped = fn {a_1, a_2}, {b_1, b_2} -> {a_1 ++ b_2, b_1 ++ a_2} end
 

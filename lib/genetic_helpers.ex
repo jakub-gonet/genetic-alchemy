@@ -1,26 +1,26 @@
 defmodule GeneticAlgorithm.Helpers do
-  def populate(number, allowed_values, length) when number > 0 and length > 0 do
+  def populate(number, allowed_values, length, fitness_func) when number > 0 and length > 0 do
     Flow.from_enumerable(1..number)
     |> Flow.reduce(fn -> [] end, fn _, acc ->
-      [generate_random_chromosome(allowed_values, length) | acc]
+      [generate_random_chromosome(allowed_values, length, fitness_func) | acc]
     end)
     |> Enum.to_list()
   end
 
   def populate(_, _, _), do: []
 
-  def crossover(population) do
+  def crossover(population, fitness_func) do
     population
     |> Enum.chunk_every(2)
     |> Flow.from_enumerable()
-    |> Flow.flat_map(&crossover_two/1)
+    |> Flow.flat_map(&crossover_two(&1, fitness_func))
     |> Enum.to_list()
   end
 
-  def mutate(population, allowed_values, chance) do
+  def mutate(population, allowed_values, chance, fitness_func) do
     population
     |> Flow.from_enumerable()
-    |> Flow.map(&mutate_one(&1, allowed_values, chance))
+    |> Flow.map(&mutate_one(&1, allowed_values, chance, fitness_func))
     |> Enum.to_list()
   end
 
@@ -33,16 +33,16 @@ defmodule GeneticAlgorithm.Helpers do
     |> Enum.take(number)
   end
 
-  defp generate_random_chromosome(allowed_values, length) do
+  defp generate_random_chromosome(allowed_values, length, fitness_func) do
     genes = for _ <- 1..length, do: %Gene{v: Enum.random(allowed_values)}
-    %Chromosome{genes: genes}
+    create_chromosome(genes, fitness_func)
   end
 
   defp create_chromosome(genes, fitness_func) do
     %Chromosome{genes: genes, fitness: fitness_func.(genes)}
   end
 
-  defp crossover_two([%Chromosome{genes: first}, %Chromosome{genes: second}]) do
+  defp crossover_two([%Chromosome{genes: first}, %Chromosome{genes: second}], fitness_func) do
     merge_swapped = fn {a_1, a_2}, {b_1, b_2} -> {a_1 ++ b_2, b_1 ++ a_2} end
 
     crossover_point = pivot_from_list(first)
@@ -50,14 +50,14 @@ defmodule GeneticAlgorithm.Helpers do
     second_split = Enum.split(second, crossover_point)
 
     {first_m, second_m} = merge_swapped.(first_split, second_split)
-    [%Chromosome{genes: first_m}, %Chromosome{genes: second_m}]
+    [create_chromosome(first_m, fitness_func), create_chromosome(second_m, fitness_func)]
   end
 
   defp crossover_two(first), do: first
 
   defp pivot_from_list(list), do: Enum.random(0..(length(list) - 1))
 
-  defp mutate_one(%Chromosome{genes: genes}, allowed_values, chance) do
+  defp mutate_one(%Chromosome{genes: genes}, allowed_values, chance, fitness_func) do
     genes =
       if :rand.uniform() <= chance do
         random_gene = %Gene{v: Enum.random(allowed_values)}
@@ -67,6 +67,6 @@ defmodule GeneticAlgorithm.Helpers do
         genes
     end
 
-    %Chromosome{genes: genes}
+    create_chromosome(genes, fitness_func)
   end
 end

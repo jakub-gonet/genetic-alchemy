@@ -9,7 +9,7 @@ defmodule GeneticAlgorithm do
     do: _find_solution(generate_initial_population(fitness_func), fitness_func, min_fitness, 0)
 
   def _find_solution(population, fitness_func, min_fitness, counter) do
-    unless can_stop?(population, fitness_func, min_fitness) do
+    unless can_stop?(population, min_fitness) do
       counter = counter + 1
       gen = next_generation(population, fitness_func)
       _find_solution(gen, fitness_func, min_fitness, counter)
@@ -28,7 +28,7 @@ defmodule GeneticAlgorithm do
     |> select_most_fitting(@chromosomes_in_gen)
   end
 
-  def can_stop?(population, fitness_func, min_fitness) do
+  def can_stop?(population, min_fitness) do
     Enum.at(population, 0).fitness >= min_fitness
   end
 end

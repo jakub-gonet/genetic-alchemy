@@ -1,4 +1,8 @@
 defmodule GeneticAlgorithm.Helpers do
+@moduledoc """
+This module is grouping functions used to generate, crossover and mutate genetic algoritm chromosomes population.
+"""
+
   def populate(number, allowed_values, length, fitness_func) when number > 0 do
     1..number
     |> Flow.from_enumerable()

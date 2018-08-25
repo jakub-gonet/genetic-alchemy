@@ -1,4 +1,7 @@
 defmodule GeneticAlgorithm do
+  @moduledoc """
+  This module is grouping functions from GeneticAlgorithm.Helpers to easily find solution of given problem. 
+  """
   import GeneticAlgorithm.Helpers
 
   @defaults %{

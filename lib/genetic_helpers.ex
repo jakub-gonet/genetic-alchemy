@@ -3,8 +3,28 @@ defmodule GeneticAlgorithm.Helpers do
 This module is grouping functions used to generate, crossover and mutate genetic algoritm chromosomes population.
 """
 
-  def populate(number, allowed_values, length, fitness_func) when number > 0 do
-    1..number
+  @doc """
+  Generates new random population with given parameters.
+
+  + `size` - population size 
+  + `allowed_values` - values used as `Gene` values
+  + `length` - amount of `Gene`s in `Chromosome`
+  + `fitness_func` - function calculating `Chromosome` fitness
+
+  ## Examples
+  ```
+  iex> GeneticAlgorithm.Helpers.populate(2, [0], 1, fn _ -> 1.0 end)
+  [
+    %Chromosome{fitness: 1.0, genes: [%Gene{v: 0}]},
+    %Chromosome{fitness: 1.0, genes: [%Gene{v: 0}]}
+  ]
+
+  iex> GeneticAlgorithm.Helpers.populate(0, [0], 1, fn _ -> 1.0 end)
+  []
+  ```
+  """
+  def populate(size, allowed_values, length, fitness_func) when size > 0 do
+    1..size
     |> Flow.from_enumerable()
     |> Flow.reduce(fn -> [] end, fn _, acc ->
       [generate_random_chromosome(allowed_values, length, fitness_func) | acc]

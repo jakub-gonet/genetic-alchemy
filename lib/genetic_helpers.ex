@@ -77,7 +77,7 @@ defmodule GeneticAlgorithm.Helpers do
     [create_chromosome(first_m, fitness_func), create_chromosome(second_m, fitness_func)]
   end
 
-  defp crossover_two(first), do: first
+  defp crossover_two(first, fitness_func), do: first
 
   defp pivot_from_list(list), do: Enum.random(0..(length(list) - 1))
 

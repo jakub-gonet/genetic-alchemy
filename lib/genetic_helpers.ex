@@ -34,7 +34,9 @@ defmodule GeneticAlgorithm.Helpers do
     population
     |> Enum.chunk_every(2)
     |> Flow.from_enumerable()
-    |> Flow.reduce(fn -> [] end, fn elem, acc -> [rulette_select(population, length(elem)) | acc] end)
+    |> Flow.reduce(fn -> [] end, fn elem, acc ->
+      [rulette_select(population, length(elem)) | acc]
+    end)
     |> Flow.flat_map(&crossover_two(&1, fitness_func))
     |> Enum.to_list()
   end
@@ -52,12 +54,13 @@ defmodule GeneticAlgorithm.Helpers do
     |> Enum.take(number)
   end
 
-  defp generate_random_chromosome(allowed_values, length, fitness_func) when length > 0 do
+  defp generate_random_chromosome(allowed_values, length, fitness_func)
+       when length > 0 and length(allowed_values) > 0 do
     genes = for _ <- 1..length, do: %Gene{v: Enum.random(allowed_values)}
     create_chromosome(genes, fitness_func)
   end
 
-  defp generate_random_chromosome(_,_,fitness_func), do: create_chromosome([], fitness_func)
+  defp generate_random_chromosome(_, _, fitness_func), do: create_chromosome([], fitness_func)
 
   defp create_chromosome(genes, fitness_func) do
     %Chromosome{genes: genes, fitness: fitness_func.(genes)}

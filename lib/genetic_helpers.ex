@@ -9,6 +9,27 @@ defmodule GeneticAlgorithm.Helpers do
 
   def populate(_, _, _), do: []
 
+  def rulette_select(population, count) do
+    _rulette_select(population, count, [])
+  end
+
+  def _rulette_select(_, count, new_population)
+      when length(new_population) == count,
+      do: new_population
+
+  def _rulette_select(population, count, new_population) do
+    choice = Enum.random(population)
+
+    new_population =
+      if :rand.uniform() <= choice.fitness do
+        [choice | new_population]
+      else
+        new_population
+      end
+
+    _rulette_select(population, count, new_population)
+  end
+
   def crossover(population, fitness_func) do
     population
     |> Enum.chunk_every(2)

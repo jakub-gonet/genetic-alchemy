@@ -5,9 +5,11 @@ defmodule GeneticHelpersTest do
 
   describe "GeneticAlgorithm.Helpers.populate/3" do
     test "create population" do
-      assert Helpers.populate(2, 1..1, 2) == [
-               %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 1}]},
-               %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 1}]}
+      fitness_func = fn _ -> 1.0 end
+
+      assert Helpers.populate(2, 1..1, 2, fitness_func) == [
+               %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 1}], fitness: 1.0},
+               %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 1}], fitness: 1.0}
              ]
     end
 

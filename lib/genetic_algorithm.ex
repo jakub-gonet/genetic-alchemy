@@ -32,7 +32,7 @@ defmodule GeneticAlgorithm do
     |> select_most_fitting(@chromosomes_in_gen)
   end
 
-  def can_stop?(population, min_fitness) do
+  defp can_stop?(population, min_fitness) do
     Enum.at(population, 0).fitness >= min_fitness
   end
 end

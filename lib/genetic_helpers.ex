@@ -34,15 +34,20 @@ This module is grouping functions used to generate, crossover and mutate genetic
 
   def populate(_, _, _, _), do: []
 
-  def rulette_select(population, count) do
-    _rulette_select(population, count, [])
+  @doc """
+  Selects `n` elements from a `population` according to their fitness.
+
+  If `Chromosome` has more fitness it has greater chance to be chosen.
+  """
+  def rulette_select(population, n) do
+    _rulette_select(population, n, [])
   end
 
-  defp _rulette_select(_, count, new_population)
-       when length(new_population) == count,
+  defp _rulette_select(_, n, new_population)
+       when length(new_population) == n,
        do: new_population
 
-  defp _rulette_select(population, count, new_population) do
+  defp _rulette_select(population, n, new_population) when n > 0 do
     choice = Enum.random(population)
 
     new_population =
@@ -52,7 +57,7 @@ This module is grouping functions used to generate, crossover and mutate genetic
         new_population
       end
 
-    _rulette_select(population, count, new_population)
+    _rulette_select(population, n, new_population)
   end
 
   def crossover(population, fitness_func) do

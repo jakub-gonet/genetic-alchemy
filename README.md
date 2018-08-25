@@ -11,6 +11,12 @@ Rulette select is used to select chromosomes for crossover, it's based on select
 mix do deps.get, compile
 ```
 
+### Building docs
+```
+mix docs
+```
+Built docs can be accessed in `/doc` folder.
+
 ### Running tests and code style check
 ```
 mix test --cover && mix credo --strict

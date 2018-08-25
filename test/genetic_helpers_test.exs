@@ -5,6 +5,18 @@ defmodule GeneticHelpersTest do
 
   def const_fitness_f(_), do: 1.0
 
+  def binary_fitness_f(genes) do
+    desired = [%Gene{v: 1}, %Gene{v: 1}, %Gene{v: 1}, %Gene{v: 1}, %Gene{v: 1}]
+    count = Enum.count(genes)
+
+    fitting =
+      desired
+      |> Enum.zip(genes)
+      |> Enum.reduce(0, fn {x, y}, acc -> if(x == y, do: 1, else: 0) + acc end)
+
+    fitting / count
+  end
+
   describe "GeneticAlgorithm.Helpers.populate/3" do
     test "create population" do
       assert Helpers.populate(2, 1..1, 2, &const_fitness_f/1) == [

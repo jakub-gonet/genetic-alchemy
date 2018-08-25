@@ -1,0 +1,2 @@
+defmodule GeneticAlgorithm do
+end

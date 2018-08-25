@@ -45,12 +45,9 @@ defmodule GeneticAlgorithm.Helpers do
     |> Enum.to_list()
   end
 
-  def select_most_fitting(population, number, fitness_func) do
+  def select_most_fitting(population, number) do
     population
-    |> Flow.from_enumerable()
-    |> Flow.map(&{&1, fitness_func.(&1)})
-    |> Enum.sort_by(fn {_, fitness} -> fitness end)
-    |> Enum.map(fn {chrom, _} -> chrom end)
+    |> Enum.sort_by(fn chrom -> chrom.fitness end, &>=/2)
     |> Enum.take(number)
   end
 

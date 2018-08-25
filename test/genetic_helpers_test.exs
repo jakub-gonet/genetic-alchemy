@@ -3,6 +3,12 @@ defmodule GeneticAlgoritm.HelpersTest do
   alias GeneticAlgorithm.Helpers
   doctest GeneticAlgorithm.Helpers
 
+  @template_population [
+    %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 2}, %Gene{v: 3}], fitness: 1.0},
+    %Chromosome{genes: [%Gene{v: 10}, %Gene{v: 20}, %Gene{v: 30}], fitness: 1.0},
+    %Chromosome{genes: [%Gene{v: 100}, %Gene{v: 200}, %Gene{v: 300}], fitness: 1.0}
+  ]
+
   def const_fitness_f(_), do: 1.0
 
   describe "GeneticAlgorithm.Helpers.populate/3" do
@@ -36,16 +42,10 @@ defmodule GeneticAlgoritm.HelpersTest do
         |> Enum.sort()
       end
 
-      population = [
-        %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 2}, %Gene{v: 3}], fitness: 1.0},
-        %Chromosome{genes: [%Gene{v: 10}, %Gene{v: 20}, %Gene{v: 30}], fitness: 1.0},
-        %Chromosome{genes: [%Gene{v: 100}, %Gene{v: 200}, %Gene{v: 300}], fitness: 1.0}
-      ]
-
-      first_gen_data = merge_and_sort_chromosome_values.(population)
+      first_gen_data = merge_and_sort_chromosome_values.(@template_population)
 
       second_gen_data =
-        population
+        @template_population
         |> Helpers.crossover(&const_fitness_f/1)
         |> merge_and_sort_chromosome_values.()
 
@@ -60,23 +60,12 @@ defmodule GeneticAlgoritm.HelpersTest do
 
   describe "GeneticAlgorithm.Helpers.mutate/3" do
     test "0% chance doesn't change any chromosome" do
-      population = [
-        %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 2}, %Gene{v: 3}], fitness: 1.0},
-        %Chromosome{genes: [%Gene{v: 10}, %Gene{v: 20}, %Gene{v: 30}], fitness: 1.0},
-        %Chromosome{genes: [%Gene{v: 100}, %Gene{v: 200}, %Gene{v: 300}], fitness: 1.0}
-      ]
-
-      assert Helpers.mutate(population, [1], 0, &const_fitness_f/1) == population
+      assert Helpers.mutate(@template_population, [1], 0, &const_fitness_f/1) ==
+               @template_population
     end
 
     test "100% chance always change every chromosome" do
-      population = [
-        %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 2}, %Gene{v: 3}], fitness: 1.0},
-        %Chromosome{genes: [%Gene{v: 10}, %Gene{v: 20}, %Gene{v: 30}], fitness: 1.0},
-        %Chromosome{genes: [%Gene{v: 100}, %Gene{v: 200}, %Gene{v: 300}], fitness: 1.0}
-      ]
-
-      assert population
+      assert @template_population
              |> Helpers.mutate([0], 1, &const_fitness_f/1)
              |> Enum.map(& &1.genes)
              |> Enum.all?(&(%Gene{v: 0} in &1))
@@ -85,15 +74,9 @@ defmodule GeneticAlgoritm.HelpersTest do
 
   describe "GeneticAlgorithm.Helpers.select_most_fitting/3" do
     test "const fitness takes any n chromosomes" do
-      population = [
-        %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 2}, %Gene{v: 3}], fitness: 1.0},
-        %Chromosome{genes: [%Gene{v: 10}, %Gene{v: 20}, %Gene{v: 30}], fitness: 1.0},
-        %Chromosome{genes: [%Gene{v: 100}, %Gene{v: 200}, %Gene{v: 300}], fitness: 1.0}
-      ]
-
-      assert population
+      assert @template_population
              |> Helpers.select_most_fitting(3)
-             |> Enum.all?(&(&1 in population))
+             |> Enum.all?(&(&1 in @template_population))
     end
   end
 end

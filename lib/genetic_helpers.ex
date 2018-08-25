@@ -1,5 +1,5 @@
 defmodule GeneticAlgorithm.Helpers do
-  def populate(number, allowed_values, length, fitness_func) when number > 0 and length > 0 do
+  def populate(number, allowed_values, length, fitness_func) when number > 0 do
     Flow.from_enumerable(1..number)
     |> Flow.reduce(fn -> [] end, fn _, acc ->
       [generate_random_chromosome(allowed_values, length, fitness_func) | acc]
@@ -52,10 +52,12 @@ defmodule GeneticAlgorithm.Helpers do
     |> Enum.take(number)
   end
 
-  defp generate_random_chromosome(allowed_values, length, fitness_func) do
+  defp generate_random_chromosome(allowed_values, length, fitness_func) when length > 0 do
     genes = for _ <- 1..length, do: %Gene{v: Enum.random(allowed_values)}
     create_chromosome(genes, fitness_func)
   end
+
+  defp generate_random_chromosome(_,_,fitness_func), do: create_chromosome([], fitness_func)
 
   defp create_chromosome(genes, fitness_func) do
     %Chromosome{genes: genes, fitness: fitness_func.(genes)}

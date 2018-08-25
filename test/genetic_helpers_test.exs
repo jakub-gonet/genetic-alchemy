@@ -19,7 +19,11 @@ defmodule GeneticAlgoritm.HelpersTest do
 
     test "create population with negative amount of chromosomes or chromosomes length" do
       assert Helpers.populate(-5, 1..1, 2, &const_fitness_f/1) == []
-      assert Helpers.populate(2, 1..1, -2, &const_fitness_f/1) == []
+
+      assert Helpers.populate(2, 1..1, -2, &const_fitness_f/1) == [
+               %Chromosome{fitness: 1.0, genes: []},
+               %Chromosome{fitness: 1.0, genes: []}
+             ]
     end
   end
 

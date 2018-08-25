@@ -1,5 +1,7 @@
 defmodule GeneticAlgorithm.Helpers do
   def populate(number, allowed_values, length, fitness_func) when number > 0 do
+    allowed_values = Enum.to_list(allowed_values)
+
     Flow.from_enumerable(1..number)
     |> Flow.reduce(fn -> [] end, fn _, acc ->
       [generate_random_chromosome(allowed_values, length, fitness_func) | acc]

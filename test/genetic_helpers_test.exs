@@ -3,6 +3,8 @@ defmodule GeneticHelpersTest do
   alias GeneticAlgorithm.Helpers
   doctest GeneticAlgorithm.Helpers
 
+  def const_fitness_f(_), do: 1.0
+
   describe "GeneticAlgorithm.Helpers.populate/3" do
     test "create population" do
       fitness_func = fn _ -> 1.0 end

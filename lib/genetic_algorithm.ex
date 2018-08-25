@@ -15,7 +15,14 @@ defmodule GeneticAlgorithm do
   }
     ```
   """
+  @typedoc """
+  `fitness_f` describes fitness function which should be passed to various functions.
+  """
   @type fitness_f :: function(genes :: [Genes.t()]) :: float
+
+  @typedoc """
+  `solution` describes solution returned after stopping the algoritm.
+  """
   @type solution :: %{generations: non_neg_integer, most_fitting: [Chromosome.t()]}
   import GeneticAlgorithm.Helpers
 

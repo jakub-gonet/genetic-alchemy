@@ -13,5 +13,8 @@ defmodule Chromosome do
   ```
   """
   defstruct genes: [], fitness: 0
+  @typedoc """
+  `Chromosome.t` accepts `genes` as `Gene`s list and `fitness` as float in range from 0.0 to 1.0. 
+  """
   @type t :: %Chromosome{genes: [Gene.t()], fitness: float()}
 end

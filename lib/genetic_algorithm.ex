@@ -15,18 +15,26 @@ defmodule GeneticAlgorithm do
       generate_initial_population(fitness_func, opts),
       fitness_func,
       0,
+      false,
       opts
     )
   end
 
-  defp _find_solution(population, fitness_func, counter, opts) do
-    %{min_fitness: min_fitness, shown_chrom: n} = Enum.into(opts, @defaults)
+  defp _find_solution(population, fitness_func, counter, found_solution?, opts)
 
-    unless can_stop?(population, min_fitness) do
-      gen = next_generation(population, fitness_func, opts)
-      _find_solution(gen, fitness_func, counter + 1, opts)
+  defp _find_solution(population, _, counter, true, opts) do
+    %{shown_chrom: n} = Enum.into(opts, @defaults)
+    %{generations: counter, most_fitting: select_most_fitting(population, n)}
+  end
+
+  defp _find_solution(population, fitness_func, counter, false, opts) do
+    %{min_fitness: min_fitness} = Enum.into(opts, @defaults)
+
+    if found_solution?(population, min_fitness) do
+      _find_solution(population, fitness_func, counter + 1, true, opts)
     else
-      %{generations: counter, most_fitting: select_most_fitting(population, n)}
+      gen = next_generation(population, fitness_func, opts)
+      _find_solution(gen, fitness_func, counter + 1, false, opts)
     end
   end
 
@@ -45,7 +53,7 @@ defmodule GeneticAlgorithm do
     populate(n, v, len, fitness_func)
   end
 
-  defp can_stop?(population, min_fitness) do
+  defp found_solution?(population, min_fitness) do
     Enum.at(population, 0).fitness >= min_fitness
   end
 end

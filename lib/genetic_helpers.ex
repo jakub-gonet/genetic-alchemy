@@ -16,8 +16,8 @@ defmodule GeneticAlgorithm.Helpers do
   end
 
   defp _rulette_select(_, count, new_population)
-      when length(new_population) == count,
-      do: new_population
+       when length(new_population) == count,
+       do: new_population
 
   defp _rulette_select(population, count, new_population) do
     choice = Enum.random(population)
@@ -86,12 +86,13 @@ defmodule GeneticAlgorithm.Helpers do
   defp mutate_one(%Chromosome{genes: genes}, allowed_values, chance, fitness_func) do
     genes =
       if :rand.uniform() <= chance do
-        random_gene = %Gene{v: Enum.random(allowed_values)}
         random_pos = pivot_from_list(genes)
+        current_gene = Enum.at(genes, random_pos).v
+        random_gene = %Gene{v: Enum.random(allowed_values -- [current_gene])}
         List.replace_at(genes, random_pos, random_gene)
       else
         genes
-    end
+      end
 
     create_chromosome(genes, fitness_func)
   end

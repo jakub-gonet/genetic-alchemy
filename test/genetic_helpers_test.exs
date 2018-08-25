@@ -7,9 +7,7 @@ defmodule GeneticHelpersTest do
 
   describe "GeneticAlgorithm.Helpers.populate/3" do
     test "create population" do
-      fitness_func = fn _ -> 1.0 end
-
-      assert Helpers.populate(2, 1..1, 2, fitness_func) == [
+      assert Helpers.populate(2, 1..1, 2, &const_fitness_f/1) == [
                %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 1}], fitness: 1.0},
                %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 1}], fitness: 1.0}
              ]
@@ -59,23 +57,23 @@ defmodule GeneticHelpersTest do
   describe "GeneticAlgorithm.Helpers.mutate/3" do
     test "0% chance doesn't change any chromosome" do
       population = [
-        %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 2}, %Gene{v: 3}]},
-        %Chromosome{genes: [%Gene{v: 10}, %Gene{v: 20}, %Gene{v: 30}]},
-        %Chromosome{genes: [%Gene{v: 100}, %Gene{v: 200}, %Gene{v: 300}]}
+        %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 2}, %Gene{v: 3}], fitness: 1.0},
+        %Chromosome{genes: [%Gene{v: 10}, %Gene{v: 20}, %Gene{v: 30}], fitness: 1.0},
+        %Chromosome{genes: [%Gene{v: 100}, %Gene{v: 200}, %Gene{v: 300}], fitness: 1.0}
       ]
 
-      assert Helpers.mutate(population, [1], 0) == population
+      assert Helpers.mutate(population, [1], 0, &const_fitness_f/1) == population
     end
 
     test "100% chance always change every chromosome" do
       population = [
-        %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 2}, %Gene{v: 3}]},
-        %Chromosome{genes: [%Gene{v: 10}, %Gene{v: 20}, %Gene{v: 30}]},
-        %Chromosome{genes: [%Gene{v: 100}, %Gene{v: 200}, %Gene{v: 300}]}
+        %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 2}, %Gene{v: 3}], fitness: 1.0},
+        %Chromosome{genes: [%Gene{v: 10}, %Gene{v: 20}, %Gene{v: 30}], fitness: 1.0},
+        %Chromosome{genes: [%Gene{v: 100}, %Gene{v: 200}, %Gene{v: 300}], fitness: 1.0}
       ]
 
       assert population
-             |> Helpers.mutate([0], 1)
+             |> Helpers.mutate([0], 1, &const_fitness_f/1)
              |> Enum.map(& &1.genes)
              |> Enum.all?(&(%Gene{v: 0} in &1))
     end
@@ -84,13 +82,13 @@ defmodule GeneticHelpersTest do
   describe "GeneticAlgorithm.Helpers.select_most_fitting/3" do
     test "const fitness takes any n chromosomes" do
       population = [
-        %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 2}, %Gene{v: 3}]},
-        %Chromosome{genes: [%Gene{v: 10}, %Gene{v: 20}, %Gene{v: 30}]},
-        %Chromosome{genes: [%Gene{v: 100}, %Gene{v: 200}, %Gene{v: 300}]}
+        %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 2}, %Gene{v: 3}], fitness: 1.0},
+        %Chromosome{genes: [%Gene{v: 10}, %Gene{v: 20}, %Gene{v: 30}], fitness: 1.0},
+        %Chromosome{genes: [%Gene{v: 100}, %Gene{v: 200}, %Gene{v: 300}], fitness: 1.0}
       ]
 
       assert population
-             |> Helpers.select_most_fitting(3, fn x -> 0 end)
+             |> Helpers.select_most_fitting(3)
              |> Enum.all?(&(&1 in population))
     end
   end

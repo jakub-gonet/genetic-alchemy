@@ -29,14 +29,19 @@ defmodule GeneticAlgorithm do
     end
   end
 
-  def generate_initial_population(fitness_func),
-    do: populate(@chromosomes_in_gen, @gene_values, 5, fitness_func)
+  def next_generation(population, fitness_func, opts \\ []) do
+    %{mutation_chance: mut, gene_values: v, chrom_in_gen: n} = Enum.into(opts, @defaults)
 
-  def next_generation(population, fitness_func) do
     population
     |> crossover(fitness_func)
-    |> mutate(@gene_values, @mutation_chance, fitness_func)
-    |> select_most_fitting(@chromosomes_in_gen)
+    |> mutate(v, mut, fitness_func)
+    |> select_most_fitting(n)
+  end
+
+  def generate_initial_population(fitness_func, opts \\ []) do
+    %{chrom_in_gen: n, gene_values: v, length: len} = Enum.into(opts, @defaults)
+
+    populate(n, v, len, fitness_func)
   end
 
   defp can_stop?(population, min_fitness) do

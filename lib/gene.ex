@@ -1,7 +1,14 @@
 defmodule Gene do
-@moduledoc """
-This struct is representing single value in Chromosome.
-It has single key, `v`, used for storing value of Gene
-"""
+  @moduledoc """
+  This struct is representing a single value in Chromosome.
+
+  Its key `v` is used for storing value of Gene
+
+  ## Example
+    ```
+    # Create new Gene with some value.
+    %Gene{v: 1}
+    ```
+  """
   defstruct [:v]
 end

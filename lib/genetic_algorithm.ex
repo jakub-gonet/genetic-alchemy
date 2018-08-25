@@ -1,6 +1,19 @@
 defmodule GeneticAlgorithm do
   @moduledoc """
-  This module is grouping functions from GeneticAlgorithm.Helpers to easily find solution of given problem. 
+  This module is grouping functions from `GeneticAlgorithm.Helpers` to easily find the solution of a given problem. 
+
+  ## Options
+  Those are options with their default values:
+  ```
+  %{
+    gene_values: [0, 1],  # values used by Gene
+    length: 5,            # length of a Chromosome
+    chrom_in_gen: 1000,   # population size
+    min_fitness: 0.9,     # minimum fitness allowing to stop
+    mutation_chance: 0.1, # mutation chance
+    shown_chrom: 3        # number of Chromosomes returned as solution
+  }
+    ```
   """
   import GeneticAlgorithm.Helpers
 
@@ -13,6 +26,11 @@ defmodule GeneticAlgorithm do
     shown_chrom: 3
   }
 
+  @doc """
+  Finds solution based on given `fitness_func`.
+
+  For list of available options see `GeneticAlgorithm` documentation.
+  """
   def find_solution(fitness_func, opts \\ []) do
     _find_solution(
       generate_initial_population(fitness_func, opts),
@@ -41,6 +59,16 @@ defmodule GeneticAlgorithm do
     end
   end
 
+  @doc """
+  Advances `population` of one generation.
+
+  `opts`:
+  + `:mutation_chance`
+  + `:gene_values`
+  + `:chrom_in_gen`
+
+  Also see `GeneticAlgorithm`.
+  """
   def next_generation(population, fitness_func, opts \\ []) do
     %{mutation_chance: mut, gene_values: v, chrom_in_gen: n} = Enum.into(opts, @defaults)
 
@@ -50,6 +78,16 @@ defmodule GeneticAlgorithm do
     |> select_most_fitting(n)
   end
 
+  @doc """
+  Generates new population with given `opts`.
+
+  `opts`:
+  + `:chrom_in_gen`
+  + `:gene_values`
+  + `:length`
+
+  Also see `GeneticAlgorithm`.
+  """
   def generate_initial_population(fitness_func, opts \\ []) do
     %{chrom_in_gen: n, gene_values: v, length: len} = Enum.into(opts, @defaults)
 

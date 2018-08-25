@@ -6,7 +6,8 @@ defmodule GeneticAlgorithm do
     length: 5,
     chrom_in_gen: 1000,
     min_fitness: 0.9,
-    mutation_chance: 0.1
+    mutation_chance: 0.1,
+    shown_chrom: 3
   }
 
   def find_solution(fitness_func, opts \\ []) do
@@ -19,13 +20,13 @@ defmodule GeneticAlgorithm do
   end
 
   defp _find_solution(population, fitness_func, counter, opts) do
-    %{min_fitness: min_fitness} = Enum.into(opts, @defaults)
+    %{min_fitness: min_fitness, shown_chrom: n} = Enum.into(opts, @defaults)
 
     unless can_stop?(population, min_fitness) do
       gen = next_generation(population, fitness_func, opts)
       _find_solution(gen, fitness_func, counter + 1, opts)
     else
-      %{generations: counter, most_fitting: select_most_fitting(population, 3)}
+      %{generations: counter, most_fitting: select_most_fitting(population, n)}
     end
   end
 

@@ -31,15 +31,9 @@ defmodule GeneticAlgorithm.Helpers do
   end
 
   def crossover(population, fitness_func) do
-    half_of_length =
     population
-      |> length()
-      |> (fn x -> Float.ceil(x / 2) end).()
-      |> trunc()
-
-    1..half_of_length
     |> Flow.from_enumerable()
-    |> Flow.reduce(fn -> [] end, fn _, acc -> [rulette_select(population, 2) | acc] end)
+    |> Flow.reduce(fn -> [] end, fn _, acc -> [rulette_select(population, 1) | acc] end)
     |> Flow.flat_map(&crossover_two(&1, fitness_func))
     |> Enum.to_list()
   end

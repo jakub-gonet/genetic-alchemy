@@ -1,9 +1,13 @@
 defmodule GeneticAlgorithm do
   import GeneticAlgorithm.Helpers
 
-  @gene_values [0, 1]
-  @mutation_chance 0.1
-  @chromosomes_in_gen 500
+  @defaults %{
+    gene_values: [0, 1],
+    length: 5,
+    chrom_in_gen: 1000,
+    min_fitness: 0.9,
+    mutation_chance: 0.1
+  }
 
   def find_solution(fitness_func, min_fitness),
     do: _find_solution(generate_initial_population(fitness_func), fitness_func, min_fitness, 0)

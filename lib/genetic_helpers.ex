@@ -60,6 +60,11 @@ This module is grouping functions used to generate, crossover and mutate genetic
     _rulette_select(population, n, new_population)
   end
 
+  @doc """
+  Crossovers `Chromosome`s in given `population`.
+
+  Creates new `population` based on previous and having same amount of elements.
+  """
   def crossover(population, fitness_func) do
     population
     |> Enum.chunk_every(2)
@@ -71,6 +76,16 @@ This module is grouping functions used to generate, crossover and mutate genetic
     |> Enum.to_list()
   end
 
+  @doc """
+  Mutates every `Chromosome` in `population` with given `chance`.
+
+  ## Example
+  ```
+  iex> p = [%Chromosome{fitness: 1.0, genes: [%Gene{v: 0}]}]
+  iex> GeneticAlgorithm.Helpers.mutate(p, [0, 1], 1.0, fn _ -> 1.0 end)
+  [%Chromosome{fitness: 1.0, genes: [%Gene{v: 1}]}]
+  ```
+  """
   def mutate(population, allowed_values, chance, fitness_func) do
     population
     |> Flow.from_enumerable()
@@ -78,10 +93,15 @@ This module is grouping functions used to generate, crossover and mutate genetic
     |> Enum.to_list()
   end
 
-  def select_most_fitting(population, number) do
+  @doc """
+  Selects `n` most fitting `Chromosome`s from a `population`.
+
+  `Chromosome`s are sorted by fitness, ascending.
+  """
+  def select_most_fitting(population, n) do
     population
     |> Enum.sort_by(fn chrom -> chrom.fitness end, &>=/2)
-    |> Enum.take(number)
+    |> Enum.take(n)
   end
 
   defp generate_random_chromosome(allowed_values, length, fitness_func)

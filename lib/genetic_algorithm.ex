@@ -18,12 +18,12 @@ defmodule GeneticAlgorithm do
     )
   end
 
+  defp _find_solution(population, fitness_func, counter, opts) do
+    %{min_fitness: min_fitness} = Enum.into(opts, @defaults)
 
-  def _find_solution(population, fitness_func, min_fitness, counter) do
     unless can_stop?(population, min_fitness) do
-      counter = counter + 1
-      gen = next_generation(population, fitness_func)
-      _find_solution(gen, fitness_func, min_fitness, counter)
+      gen = next_generation(population, fitness_func, opts)
+      _find_solution(gen, fitness_func, counter + 1, opts)
     else
       %{generations: counter, most_fitting: select_most_fitting(population, 3)}
     end

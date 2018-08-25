@@ -1,4 +1,4 @@
-defmodule GeneticHelpersTest do
+defmodule GeneticAlgoritm.HelpersTest do
   use ExUnit.Case, async: true
   alias GeneticAlgorithm.Helpers
   doctest GeneticAlgorithm.Helpers

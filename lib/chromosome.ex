@@ -13,4 +13,5 @@ defmodule Chromosome do
   ```
   """
   defstruct genes: [], fitness: 0
+  @type t :: %Chromosome{genes: [Gene.t()], fitness: float()}
 end

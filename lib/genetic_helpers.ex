@@ -1,7 +1,8 @@
 defmodule GeneticAlgorithm.Helpers do
-@moduledoc """
-This module is grouping functions used to generate, crossover and mutate genetic algoritm chromosomes population.
-"""
+  @moduledoc """
+  This module is grouping functions used to generate, crossover and mutate genetic algoritm chromosomes population.
+  """
+  @type fitness_f :: function(genes :: [Genes.t()]) :: float
 
   @doc """
   Generates new random population with given parameters.
@@ -23,6 +24,12 @@ This module is grouping functions used to generate, crossover and mutate genetic
   []
   ```
   """
+  @spec populate(
+          size :: non_neg_integer,
+          allowed_values :: list,
+          length :: non_neg_integer,
+          fitness_func :: fitness_f
+        ) :: [Chromosome.t()]
   def populate(size, allowed_values, length, fitness_func) when size > 0 do
     1..size
     |> Flow.from_enumerable()
@@ -39,6 +46,7 @@ This module is grouping functions used to generate, crossover and mutate genetic
 
   If `Chromosome` has more fitness it has greater chance to be chosen.
   """
+  @spec rulette_select(population :: [Chromosome.t()], n :: non_neg_integer) :: [Chromosome.t()]
   def rulette_select(population, n) do
     _rulette_select(population, n, [])
   end
@@ -65,6 +73,7 @@ This module is grouping functions used to generate, crossover and mutate genetic
 
   Creates new `population` based on previous and having same amount of elements.
   """
+  @spec crossover(population :: [Chromosome.t()], fitness_func :: fitness_f) :: [Chromosome.t()]
   def crossover(population, fitness_func) do
     population
     |> Enum.chunk_every(2)
@@ -86,6 +95,12 @@ This module is grouping functions used to generate, crossover and mutate genetic
   [%Chromosome{fitness: 1.0, genes: [%Gene{v: 1}]}]
   ```
   """
+  @spec mutate(
+          population :: [Chromosome.t()],
+          allowed_values :: list,
+          chance :: float,
+          fitness_func :: fitness_f
+        ) :: [Chromosome.t()]
   def mutate(population, allowed_values, chance, fitness_func) do
     population
     |> Flow.from_enumerable()
@@ -98,6 +113,9 @@ This module is grouping functions used to generate, crossover and mutate genetic
 
   `Chromosome`s are sorted by fitness, ascending.
   """
+  @spec select_most_fitting(population :: [Chromosome.t()], n :: non_neg_integer) :: [
+          Chromosome.t()
+        ]
   def select_most_fitting(population, n) do
     population
     |> Enum.sort_by(fn chrom -> chrom.fitness end, &>=/2)

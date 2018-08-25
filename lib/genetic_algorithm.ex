@@ -15,6 +15,8 @@ defmodule GeneticAlgorithm do
   }
     ```
   """
+  @type fitness_f :: function(genes :: [Genes.t()]) :: float
+  @type solution :: %{generations: non_neg_integer, most_fitting: [Chromosome.t()]}
   import GeneticAlgorithm.Helpers
 
   @defaults %{
@@ -31,7 +33,8 @@ defmodule GeneticAlgorithm do
 
   For list of available options see `GeneticAlgorithm` documentation.
   """
-  def find_solution(fitness_func, opts \\ []) do
+  @spec find_solution(fitness_func :: fitness_f, opts :: keyword) :: solution
+  def(find_solution(fitness_func, opts \\ [])) do
     _find_solution(
       generate_initial_population(fitness_func, opts),
       fitness_func,
@@ -69,6 +72,11 @@ defmodule GeneticAlgorithm do
 
   Also see `GeneticAlgorithm`.
   """
+  @spec next_generation(
+          population :: [Chromosome.t()],
+          fitness_func :: fitness_f,
+          opts :: keyword
+        ) :: [Chromosome.t()]
   def next_generation(population, fitness_func, opts \\ []) do
     %{mutation_chance: mut, gene_values: v, chrom_in_gen: n} = Enum.into(opts, @defaults)
 
@@ -88,6 +96,9 @@ defmodule GeneticAlgorithm do
 
   Also see `GeneticAlgorithm`.
   """
+  @spec generate_initial_population(fitness_func :: fitness_f, opts :: keyword) :: [
+          Chromosome.t()
+        ]
   def generate_initial_population(fitness_func, opts \\ []) do
     %{chrom_in_gen: n, gene_values: v, length: len} = Enum.into(opts, @defaults)
 

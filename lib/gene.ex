@@ -10,5 +10,6 @@ defmodule Gene do
     %Gene{v: 1}
     ```
   """
-  defstruct [:v]
+  defstruct v: nil
+  @type t :: %Gene{v: any}
 end

@@ -7,7 +7,10 @@ cache:
   directories:
     - _build
     - deps
+env:
+  - MIX_ENV=test
 
 script:
   - mix credo --strict
-  - mix test --cover
+  - mix test
+  - mix coveralls.travis

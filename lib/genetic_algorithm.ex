@@ -9,8 +9,15 @@ defmodule GeneticAlgorithm do
     mutation_chance: 0.1
   }
 
-  def find_solution(fitness_func, min_fitness),
-    do: _find_solution(generate_initial_population(fitness_func), fitness_func, min_fitness, 0)
+  def find_solution(fitness_func, opts \\ []) do
+    _find_solution(
+      generate_initial_population(fitness_func, opts),
+      fitness_func,
+      0,
+      opts
+    )
+  end
+
 
   def _find_solution(population, fitness_func, min_fitness, counter) do
     unless can_stop?(population, min_fitness) do

@@ -13,11 +13,11 @@ defmodule GeneticAlgorithm.Helpers do
     _rulette_select(population, count, [])
   end
 
-  def _rulette_select(_, count, new_population)
+  defp _rulette_select(_, count, new_population)
       when length(new_population) == count,
       do: new_population
 
-  def _rulette_select(population, count, new_population) do
+  defp _rulette_select(population, count, new_population) do
     choice = Enum.random(population)
 
     new_population =

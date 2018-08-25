@@ -7,20 +7,20 @@ defmodule GeneticAlgoritm.HelpersTest do
 
   describe "GeneticAlgorithm.Helpers.populate/3" do
     test "create population" do
-      assert Helpers.populate(2, 1..1, 2, &const_fitness_f/1) == [
+      assert Helpers.populate(2, Enum.to_list(1..1), 2, &const_fitness_f/1) == [
                %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 1}], fitness: 1.0},
                %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 1}], fitness: 1.0}
              ]
     end
 
     test "create population with 0 chromosomes" do
-      assert Helpers.populate(0, 1..1, 2, &const_fitness_f/1) == []
+      assert Helpers.populate(0, Enum.to_list(1..1), 2, &const_fitness_f/1) == []
     end
 
     test "create population with negative amount of chromosomes or chromosomes length" do
-      assert Helpers.populate(-5, 1..1, 2, &const_fitness_f/1) == []
+      assert Helpers.populate(-5, Enum.to_list(1..1), 2, &const_fitness_f/1) == []
 
-      assert Helpers.populate(2, 1..1, -2, &const_fitness_f/1) == [
+      assert Helpers.populate(2, Enum.to_list(1..1), -2, &const_fitness_f/1) == [
                %Chromosome{fitness: 1.0, genes: []},
                %Chromosome{fitness: 1.0, genes: []}
              ]

@@ -6,6 +6,9 @@ It uses Flow library to achieve high concurrency in time-consuming tasks such as
 
 Rulette select is used to select chromosomes for crossover, it's based on selecting chromosomes with chance coresponding to their fitness.
 
+Examples of usage can be viewed [here](https://github.com/jakub-gonet/genetic-alchemy/blob/master/test/genetic_algoritm_solutions_test.exs)  
+One test is finding specific gene pattern, second searches for RNP expression of given number (e.g. `2 11 *` for `22`)
+
 ## Installation
 ```
 mix do deps.get, compile
@@ -15,7 +18,7 @@ mix do deps.get, compile
 ```
 mix docs
 ```
-Built docs can be accessed in `/doc` folder or viewed online [here](https://jakub-gonet.github.io/genetic-alchemy/readme.html).
+Built docs can be accessed in `/doc` folder or viewed online [here](https://jakub-gonet.github.io/genetic-alchemy/readme.html). 
 
 ### Running tests and code style check
 ```

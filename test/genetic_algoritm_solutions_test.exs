@@ -35,6 +35,24 @@ defmodule GeneticAlgoritmSolutionTest do
 
     fitting / count
   end
+
+  def reverse_calculator_fitness(genes) do
+    num_diff = fn
+      :error, _ ->
+        0.0
+
+      v, wanted ->
+        diff = abs((wanted - v) / wanted)
+        cut_range = if diff > 1.0, do: 1.0, else: diff
+        1.0 - cut_range
+    end
+
+    genes
+    |> Enum.map(& &1.v)
+    |> compute_RPN_expr()
+    |> num_diff.(42)
+  end
+
   def compute_RPN_expr(expr), do: _compute_RPN_expr(expr, [])
 
   defp _compute_RPN_expr([], [result]), do: result

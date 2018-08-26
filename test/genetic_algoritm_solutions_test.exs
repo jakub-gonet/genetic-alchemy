@@ -23,7 +23,7 @@ defmodule GeneticAlgoritmSolutionTest do
       assert desired in solution.most_fitting
     end
 
-    test "find math operation achieving some value" do
+    test "find math operation evaluating to given number" do
       opts = [
         chrom_in_gen: 100,
         gene_values: Enum.to_list(1..25) ++ [&+/2, &-/2, &*/2, &//2],

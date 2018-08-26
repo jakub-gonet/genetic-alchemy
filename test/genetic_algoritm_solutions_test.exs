@@ -19,7 +19,7 @@ defmodule GeneticAlgoritmSolutionTest do
 
       solution = GeneticAlgorithm.find_solution(&pattern_fitness/1, opts)
 
-      Logger.info("Found solution after #{solution.generations} generations")
+      Logger.info("Found solution for pattern problem after #{solution.generations} generations")
       assert desired in solution.most_fitting
     end
   end

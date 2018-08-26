@@ -35,4 +35,21 @@ defmodule GeneticAlgoritmSolutionTest do
 
     fitting / count
   end
+  def compute_RPN_expr(expr), do: _compute_RPN_expr(expr, [])
+
+  defp _compute_RPN_expr([], [result]), do: result
+
+  defp _compute_RPN_expr([v | tail], stack) when is_number(v),
+    do: _compute_RPN_expr(tail, [v | stack])
+
+  defp _compute_RPN_expr([operator | tail], [a, b | stack])
+       when is_function(operator, 2) and is_number(a) and is_number(b) do
+    if operator == (&//2) and a == 0 do
+      :error
+    else
+      _compute_RPN_expr(tail, [operator.(b, a) | stack])
+    end
+  end
+
+  defp _compute_RPN_expr(_, _), do: :error
 end

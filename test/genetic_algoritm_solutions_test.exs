@@ -22,6 +22,26 @@ defmodule GeneticAlgoritmSolutionTest do
       Logger.info("Found solution for pattern problem after #{solution.generations} generations")
       assert desired in solution.most_fitting
     end
+
+    test "find math operation achieving some value" do
+      opts = [
+        chrom_in_gen: 100,
+        gene_values: Enum.to_list(1..25) ++ [&+/2, &-/2, &*/2, &//2],
+        length: 5,
+        min_fitness: 1.0,
+        mutation_chance: 0.2
+      ]
+
+      solution = GeneticAlgorithm.find_solution(&reverse_calculator_fitness/1, opts)
+      best = Enum.at(solution.most_fitting, 0)
+
+      Logger.info(
+        "Found solution for reverse calculating 42 after #{solution.generations} generations,
+        genes: #{inspect(best.genes)}"
+      )
+
+      assert 42 == best.genes |> Enum.map(& &1.v) |> compute_RPN_expr()
+    end
   end
 
   def pattern_fitness(genes) do

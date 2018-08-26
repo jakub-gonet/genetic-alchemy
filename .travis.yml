@@ -15,9 +15,9 @@ install:
   - mix local.rebar --force
   - mix deps.get
   - mix deps.compile
-  
+
 script:
   - mix credo --strict
   - mix test
-  - mix dialyzer --halt-exit-status
+  # - mix dialyzer --halt-exit-status
   - mix coveralls.travis

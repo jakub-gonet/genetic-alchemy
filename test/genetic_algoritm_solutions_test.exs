@@ -1,4 +1,5 @@
 defmodule GeneticAlgoritmSolutionTest do
+  # credo:disable-for-this-file Credo.Check.Consistency.SpaceAroundOperators
   use ExUnit.Case, async: true
   require Logger
 

@@ -19,5 +19,14 @@ install:
 script:
   - mix credo --strict
   - mix test
-  # - mix dialyzer --halt-exit-status
   - mix coveralls.travis
+  - MIX_ENV=dev mix docs 
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  local-dir: "doc/"
+  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep-history: true
+  on:
+    branch: master

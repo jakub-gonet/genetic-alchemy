@@ -28,7 +28,7 @@ defmodule GeneticAlgoritmSolutionTest do
       opts = [
         chrom_in_gen: 100,
         gene_values: Enum.to_list(1..25) ++ [&+/2, &-/2, &*/2, &//2],
-        length: 5,
+        length: 3,
         min_fitness: 1.0,
         mutation_chance: 0.2
       ]

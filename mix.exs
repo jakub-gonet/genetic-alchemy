@@ -12,6 +12,7 @@ defmodule Genetic.MixProject do
       preferred_cli_env: [coveralls: :test],
 
       name: "Genetic Algorithm",
+      source_url: "https://github.com/jakub-gonet/genetic-alchemy",
       docs: [
         main: "readme",
         extras: ["README.md"]

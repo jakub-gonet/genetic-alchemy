@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.19.1">
+    <title>Genetic algoritm – Genetic Algorithm v1.0.0</title>
+    <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
+    <script src="dist/sidebar_items-7d05b3ce0d.js"></script>
+    
+  </head>
+  <body data-type="extras">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
+
+  <a href="readme.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+Genetic Algorithm      </h1>
+      <h2 class="sidebar-projectVersion">
+        v1.0.0
+      </h2>
+    </div>
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Genetic algoritm</h1>
+<p><a href="https://travis-ci.org/jakub-gonet/genetic-alchemy"><img src="https://travis-ci.org/jakub-gonet/genetic-alchemy.svg?branch=master" alt="Build Status"/></a> <a href="https://coveralls.io/github/jakub-gonet/genetic-alchemy?branch=master"><img src="https://coveralls.io/repos/github/jakub-gonet/genetic-alchemy/badge.svg?branch=master" alt="Coverage Status"/></a>  </p>
+<p>This is genetic algoritm implementation written in Elixir.
+It uses Flow library to achieve high concurrency in time-consuming tasks such as calculating fitness or crossovering chromosomes.</p>
+<p>Rulette select is used to select chromosomes for crossover, it’s based on selecting chromosomes with chance coresponding to their fitness.</p>
+<h2 id="installation" class="section-heading">
+  <a href="#installation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Installation
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="n">mix</span><span class="w"> </span><span class="k" data-group-id="2990174969-1">do</span><span class="w"> </span><span class="n">deps</span><span class="o">.</span><span class="n">get</span><span class="p">,</span><span class="w"> </span><span class="n">compile</span></code></pre>
+<h3 id="building-docs" class="section-heading">
+  <a href="#building-docs" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Building docs
+</h3>
+
+<pre><code class="nohighlight makeup elixir"><span class="n">mix</span><span class="w"> </span><span class="n">docs</span></code></pre>
+<p>Built docs can be accessed in <code class="inline">/doc</code> folder.</p>
+<h3 id="running-tests-and-code-style-check" class="section-heading">
+  <a href="#running-tests-and-code-style-check" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Running tests and code style check
+</h3>
+
+<pre><code class="nohighlight makeup elixir"><span class="n">mix</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">--</span><span class="n">cover</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">mix</span><span class="w"> </span><span class="n">credo</span><span class="w"> </span><span class="o">--</span><span class="n">strict</span></code></pre>
+<h2 id="usage" class="section-heading">
+  <a href="#usage" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Usage
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="n">iex</span><span class="w"> </span><span class="o">-</span><span class="nc">S</span><span class="w"> </span><span class="n">mix</span></code></pre>
+<p>This command load Elixir’s REPL with project modules loaded.
+To try it out just define fitness function:</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">fitness_f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k" data-group-id="1356545763-1">fn</span><span class="w"> </span><span class="n">genes</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+  </span><span class="n">desired</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="1356545763-2">[</span><span class="p" data-group-id="1356545763-3">%</span><span class="nc" data-group-id="1356545763-3">Gene</span><span class="p" data-group-id="1356545763-3">{</span><span class="ss">v</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="1356545763-3">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1356545763-4">%</span><span class="nc" data-group-id="1356545763-4">Gene</span><span class="p" data-group-id="1356545763-4">{</span><span class="ss">v</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="1356545763-4">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1356545763-5">%</span><span class="nc" data-group-id="1356545763-5">Gene</span><span class="p" data-group-id="1356545763-5">{</span><span class="ss">v</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="1356545763-5">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1356545763-6">%</span><span class="nc" data-group-id="1356545763-6">Gene</span><span class="p" data-group-id="1356545763-6">{</span><span class="ss">v</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="1356545763-6">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1356545763-7">%</span><span class="nc" data-group-id="1356545763-7">Gene</span><span class="p" data-group-id="1356545763-7">{</span><span class="ss">v</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="1356545763-7">}</span><span class="p" data-group-id="1356545763-2">]</span><span class="w">
+    </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">count</span><span class="p" data-group-id="1356545763-8">(</span><span class="n">genes</span><span class="p" data-group-id="1356545763-8">)</span><span class="w">
+
+    </span><span class="n">fitting</span><span class="w"> </span><span class="o">=</span><span class="w">
+      </span><span class="n">desired</span><span class="w">
+      </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">zip</span><span class="p" data-group-id="1356545763-9">(</span><span class="n">genes</span><span class="p" data-group-id="1356545763-9">)</span><span class="w">
+      </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">reduce</span><span class="p" data-group-id="1356545763-10">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="1356545763-11">fn</span><span class="w"> </span><span class="p" data-group-id="1356545763-12">{</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p" data-group-id="1356545763-12">}</span><span class="p">,</span><span class="w"> </span><span class="n">acc</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">if</span><span class="p" data-group-id="1356545763-13">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">else</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="1356545763-13">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">acc</span><span class="w"> </span><span class="k" data-group-id="1356545763-11">end</span><span class="p" data-group-id="1356545763-10">)</span><span class="w">
+
+    </span><span class="n">fitting</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">count</span><span class="w">
+</span><span class="k" data-group-id="1356545763-1">end</span></code></pre>
+<p>set algoritm options:</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">settings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="6888036866-1">[</span><span class="w">
+  </span><span class="ss">gene_values</span><span class="p">:</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="6888036866-2">(</span><span class="mi">1</span><span class="o">.</span><span class="o">.</span><span class="mi">5</span><span class="p" data-group-id="6888036866-2">)</span><span class="p">,</span><span class="w">
+  </span><span class="ss">length</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="ss">min_fitness</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="w">
+</span><span class="p" data-group-id="6888036866-1">]</span></code></pre>
+<p>and call <a href="GeneticAlgorithm.html#find_solution/2"><code class="inline">GeneticAlgorithm.find_solution/2</code></a>:</p>
+<pre><code class="nohighlight makeup elixir"><span class="nc">GeneticAlgorithm</span><span class="o">.</span><span class="n">find_solution</span><span class="p" data-group-id="2613401413-1">(</span><span class="n">fitness_f</span><span class="p">,</span><span class="w"> </span><span class="n">settings</span><span class="p" data-group-id="2613401413-1">)</span></code></pre>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-a0c90688fa.js"></script>
+  
+  </body>
+</html>
+

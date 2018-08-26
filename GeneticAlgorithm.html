@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.19.1">
+    <title>GeneticAlgorithm – Genetic Algorithm v1.0.0</title>
+    <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
+    <script src="dist/sidebar_items-7d05b3ce0d.js"></script>
+    
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
+
+  <a href="readme.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+Genetic Algorithm      </h1>
+      <h2 class="sidebar-projectVersion">
+        v1.0.0
+      </h2>
+    </div>
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs">Genetic Algorithm v1.0.0</small>
+GeneticAlgorithm              </h1>
+
+
+        <section id="moduledoc">
+<p>This module is grouping functions from <a href="GeneticAlgorithm.Helpers.html"><code class="inline">GeneticAlgorithm.Helpers</code></a> to easily find the solution of a given problem. </p>
+<h2 id="module-options" class="section-heading">
+  <a href="#module-options" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Options
+</h2>
+
+<p>Those are options with their default values:</p>
+<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="6823396914-1">%{</span><span class="w">
+  </span><span class="ss">gene_values</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6823396914-2">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="6823396914-2">]</span><span class="p">,</span><span class="w">  </span><span class="c1"># values used by Gene</span><span class="w">
+  </span><span class="ss">length</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">            </span><span class="c1"># length of a Chromosome</span><span class="w">
+  </span><span class="ss">chrom_in_gen</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">   </span><span class="c1"># population size</span><span class="w">
+  </span><span class="ss">min_fitness</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w">     </span><span class="c1"># minimum fitness allowing to stop</span><span class="w">
+  </span><span class="ss">mutation_chance</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="c1"># mutation chance</span><span class="w">
+  </span><span class="ss">shown_chrom</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">        </span><span class="c1"># number of Chromosomes returned as solution</span><span class="w">
+</span><span class="p" data-group-id="6823396914-1">}</span></code></pre>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:fitness_f/0">fitness_f()</a>
+  </div>
+    <div class="summary-synopsis"><p><code class="inline">fitness_f</code> describes fitness function which should be passed to various functions</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:solution/0">solution()</a>
+  </div>
+    <div class="summary-synopsis"><p><code class="inline">solution</code> describes solution returned after stopping the algoritm</p>
+</div>
+</div>
+  </div>
+          
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#find_solution/2">find_solution(fitness_func, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>Finds solution based on given <code class="inline">fitness_func</code></p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#generate_initial_population/2">generate_initial_population(fitness_func, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>Generates new population with given <code class="inline">opts</code></p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#next_generation/3">next_generation(population, fitness_func, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>Advances <code class="inline">population</code> of one generation</p>
+</div>
+</div>
+  </div>
+          
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Types
+          </h1>
+          <div class="types-list">
+<div class="detail" id="t:fitness_f/0">
+    <div class="detail-header">
+    <a href="#t:fitness_f/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">fitness_f()</span>
+        
+      <div class="specs">
+          <pre>fitness_f() :: function(genes :: [Genes.t()]) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p><code class="inline">fitness_f</code> describes fitness function which should be passed to various functions.</p>
+  </section>
+</div>
+<div class="detail" id="t:solution/0">
+    <div class="detail-header">
+    <a href="#t:solution/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">solution()</span>
+        
+      <div class="specs">
+          <pre>solution() :: %{generations: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), most_fitting: [<a href="Chromosome.html#t:t/0">Chromosome.t</a>()]}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p><code class="inline">solution</code> describes solution returned after stopping the algoritm.</p>
+  </section>
+</div>
+          </div>
+        </section>
+
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Functions
+          </h1>
+<div class="detail" id="find_solution/2">
+  
+    <span id="find_solution/1"></span>
+  <div class="detail-header">
+    <a href="#find_solution/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">find_solution(fitness_func, opts \\ [])</span>
+        
+      <div class="specs">
+          <pre>find_solution(fitness_func :: <a href="#t:fitness_f/0">fitness_f</a>(), opts :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) :: <a href="#t:solution/0">solution</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Finds solution based on given <code class="inline">fitness_func</code>.</p>
+<p>For list of available options see <a href="GeneticAlgorithm.html#content"><code class="inline">GeneticAlgorithm</code></a> documentation.</p>
+  </section>
+</div>
+<div class="detail" id="generate_initial_population/2">
+  
+    <span id="generate_initial_population/1"></span>
+  <div class="detail-header">
+    <a href="#generate_initial_population/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">generate_initial_population(fitness_func, opts \\ [])</span>
+        
+      <div class="specs">
+          <pre>generate_initial_population(fitness_func :: <a href="#t:fitness_f/0">fitness_f</a>(), opts :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) :: [
+  <a href="Chromosome.html#t:t/0">Chromosome.t</a>()
+]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Generates new population with given <code class="inline">opts</code>.</p>
+<p><code class="inline">opts</code>:</p>
+<ul>
+<li><code class="inline">:chrom_in_gen</code>
+</li>
+<li><code class="inline">:gene_values</code>
+</li>
+<li><code class="inline">:length</code>
+</li>
+</ul>
+<p>Also see <a href="GeneticAlgorithm.html#content"><code class="inline">GeneticAlgorithm</code></a>.</p>
+  </section>
+</div>
+<div class="detail" id="next_generation/3">
+  
+    <span id="next_generation/2"></span>
+  <div class="detail-header">
+    <a href="#next_generation/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">next_generation(population, fitness_func, opts \\ [])</span>
+        
+      <div class="specs">
+          <pre>next_generation(
+  population :: [<a href="Chromosome.html#t:t/0">Chromosome.t</a>()],
+  fitness_func :: <a href="#t:fitness_f/0">fitness_f</a>(),
+  opts :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()
+) :: [<a href="Chromosome.html#t:t/0">Chromosome.t</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Advances <code class="inline">population</code> of one generation.</p>
+<p><code class="inline">opts</code>:</p>
+<ul>
+<li><code class="inline">:mutation_chance</code>
+</li>
+<li><code class="inline">:gene_values</code>
+</li>
+<li><code class="inline">:chrom_in_gen</code>
+</li>
+</ul>
+<p>Also see <a href="GeneticAlgorithm.html#content"><code class="inline">GeneticAlgorithm</code></a>.</p>
+  </section>
+</div>
+        </section>
+
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-a0c90688fa.js"></script>
+  
+  </body>
+</html>
+

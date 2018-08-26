@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.19.1">
+    <title>GeneticAlgorithm.Helpers – Genetic Algorithm v1.0.0</title>
+    <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
+    <script src="dist/sidebar_items-7d05b3ce0d.js"></script>
+    
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
+
+  <a href="readme.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+Genetic Algorithm      </h1>
+      <h2 class="sidebar-projectVersion">
+        v1.0.0
+      </h2>
+    </div>
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs">Genetic Algorithm v1.0.0</small>
+GeneticAlgorithm.Helpers              </h1>
+
+
+        <section id="moduledoc">
+<p>This module is grouping functions used to generate, crossover and mutate genetic algoritm chromosomes population.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:fitness_f/0">fitness_f()</a>
+  </div>
+</div>
+  </div>
+          
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#crossover/2">crossover(population, fitness_func)</a>
+  </div>
+    <div class="summary-synopsis"><p>Crossovers <a href="Chromosome.html"><code class="inline">Chromosome</code></a>s in given <code class="inline">population</code></p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mutate/4">mutate(population, allowed_values, chance, fitness_func)</a>
+  </div>
+    <div class="summary-synopsis"><p>Mutates every <a href="Chromosome.html"><code class="inline">Chromosome</code></a> in <code class="inline">population</code> with given <code class="inline">chance</code></p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#populate/4">populate(size, allowed_values, length, fitness_func)</a>
+  </div>
+    <div class="summary-synopsis"><p>Generates new random population with given parameters</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rulette_select/2">rulette_select(population, n)</a>
+  </div>
+    <div class="summary-synopsis"><p>Selects <code class="inline">n</code> elements from a <code class="inline">population</code> according to their fitness</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#select_most_fitting/2">select_most_fitting(population, n)</a>
+  </div>
+    <div class="summary-synopsis"><p>Selects <code class="inline">n</code> most fitting <a href="Chromosome.html"><code class="inline">Chromosome</code></a>s from a <code class="inline">population</code></p>
+</div>
+</div>
+  </div>
+          
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Types
+          </h1>
+          <div class="types-list">
+<div class="detail" id="t:fitness_f/0">
+    <div class="detail-header">
+    <a href="#t:fitness_f/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">fitness_f()</span>
+        
+      <div class="specs">
+          <pre>fitness_f() :: function(genes :: [Genes.t()]) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</div>
+          </div>
+        </section>
+
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Functions
+          </h1>
+<div class="detail" id="crossover/2">
+    <div class="detail-header">
+    <a href="#crossover/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">crossover(population, fitness_func)</span>
+        
+      <div class="specs">
+          <pre>crossover(population :: [<a href="Chromosome.html#t:t/0">Chromosome.t</a>()], fitness_func :: <a href="#t:fitness_f/0">fitness_f</a>()) :: [
+  <a href="Chromosome.html#t:t/0">Chromosome.t</a>()
+]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Crossovers <a href="Chromosome.html"><code class="inline">Chromosome</code></a>s in given <code class="inline">population</code>.</p>
+<p>Creates new <code class="inline">population</code> based on previous and having same amount of elements.</p>
+  </section>
+</div>
+<div class="detail" id="mutate/4">
+    <div class="detail-header">
+    <a href="#mutate/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">mutate(population, allowed_values, chance, fitness_func)</span>
+        
+      <div class="specs">
+          <pre>mutate(
+  population :: [<a href="Chromosome.html#t:t/0">Chromosome.t</a>()],
+  allowed_values :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(),
+  chance :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(),
+  fitness_func :: <a href="#t:fitness_f/0">fitness_f</a>()
+) :: [<a href="Chromosome.html#t:t/0">Chromosome.t</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Mutates every <a href="Chromosome.html"><code class="inline">Chromosome</code></a> in <code class="inline">population</code> with given <code class="inline">chance</code>.</p>
+<h2 id="mutate/4-example" class="section-heading">
+  <a href="#mutate/4-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Example
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="8413669548-1">[</span><span class="p" data-group-id="8413669548-2">%</span><span class="nc" data-group-id="8413669548-2">Chromosome</span><span class="p" data-group-id="8413669548-2">{</span><span class="ss">fitness</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="ss">genes</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8413669548-3">[</span><span class="p" data-group-id="8413669548-4">%</span><span class="nc" data-group-id="8413669548-4">Gene</span><span class="p" data-group-id="8413669548-4">{</span><span class="ss">v</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="8413669548-4">}</span><span class="p" data-group-id="8413669548-3">]</span><span class="p" data-group-id="8413669548-2">}</span><span class="p" data-group-id="8413669548-1">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">GeneticAlgorithm.Helpers</span><span class="o">.</span><span class="n">mutate</span><span class="p" data-group-id="8413669548-5">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8413669548-6">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="8413669548-6">]</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="8413669548-7">fn</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="k" data-group-id="8413669548-7">end</span><span class="p" data-group-id="8413669548-5">)</span><span class="w">
+</span><span class="p" data-group-id="8413669548-8">[</span><span class="p" data-group-id="8413669548-9">%</span><span class="nc" data-group-id="8413669548-9">Chromosome</span><span class="p" data-group-id="8413669548-9">{</span><span class="ss">fitness</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="ss">genes</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8413669548-10">[</span><span class="p" data-group-id="8413669548-11">%</span><span class="nc" data-group-id="8413669548-11">Gene</span><span class="p" data-group-id="8413669548-11">{</span><span class="ss">v</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="8413669548-11">}</span><span class="p" data-group-id="8413669548-10">]</span><span class="p" data-group-id="8413669548-9">}</span><span class="p" data-group-id="8413669548-8">]</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="populate/4">
+    <div class="detail-header">
+    <a href="#populate/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">populate(size, allowed_values, length, fitness_func)</span>
+        
+      <div class="specs">
+          <pre>populate(
+  size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+  allowed_values :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(),
+  length :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+  fitness_func :: <a href="#t:fitness_f/0">fitness_f</a>()
+) :: [<a href="Chromosome.html#t:t/0">Chromosome.t</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Generates new random population with given parameters.</p>
+<ul>
+<li><code class="inline">size</code> - population size 
+</li>
+<li><code class="inline">allowed_values</code> - values used as <a href="Gene.html"><code class="inline">Gene</code></a> values
+</li>
+<li><code class="inline">length</code> - amount of <a href="Gene.html"><code class="inline">Gene</code></a>s in <a href="Chromosome.html"><code class="inline">Chromosome</code></a>
+</li>
+<li><code class="inline">fitness_func</code> - function calculating <a href="Chromosome.html"><code class="inline">Chromosome</code></a> fitness
+</li>
+</ul>
+<h2 id="populate/4-examples" class="section-heading">
+  <a href="#populate/4-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">GeneticAlgorithm.Helpers</span><span class="o">.</span><span class="n">populate</span><span class="p" data-group-id="2627032437-1">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2627032437-2">[</span><span class="mi">0</span><span class="p" data-group-id="2627032437-2">]</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="2627032437-3">fn</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="k" data-group-id="2627032437-3">end</span><span class="p" data-group-id="2627032437-1">)</span><span class="w">
+</span><span class="p" data-group-id="2627032437-4">[</span><span class="w">
+  </span><span class="p" data-group-id="2627032437-5">%</span><span class="nc" data-group-id="2627032437-5">Chromosome</span><span class="p" data-group-id="2627032437-5">{</span><span class="ss">fitness</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="ss">genes</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2627032437-6">[</span><span class="p" data-group-id="2627032437-7">%</span><span class="nc" data-group-id="2627032437-7">Gene</span><span class="p" data-group-id="2627032437-7">{</span><span class="ss">v</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="2627032437-7">}</span><span class="p" data-group-id="2627032437-6">]</span><span class="p" data-group-id="2627032437-5">}</span><span class="p">,</span><span class="w">
+  </span><span class="p" data-group-id="2627032437-8">%</span><span class="nc" data-group-id="2627032437-8">Chromosome</span><span class="p" data-group-id="2627032437-8">{</span><span class="ss">fitness</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="ss">genes</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2627032437-9">[</span><span class="p" data-group-id="2627032437-10">%</span><span class="nc" data-group-id="2627032437-10">Gene</span><span class="p" data-group-id="2627032437-10">{</span><span class="ss">v</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="2627032437-10">}</span><span class="p" data-group-id="2627032437-9">]</span><span class="p" data-group-id="2627032437-8">}</span><span class="w">
+</span><span class="p" data-group-id="2627032437-4">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">GeneticAlgorithm.Helpers</span><span class="o">.</span><span class="n">populate</span><span class="p" data-group-id="2627032437-11">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2627032437-12">[</span><span class="mi">0</span><span class="p" data-group-id="2627032437-12">]</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="2627032437-13">fn</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="k" data-group-id="2627032437-13">end</span><span class="p" data-group-id="2627032437-11">)</span><span class="w">
+</span><span class="p" data-group-id="2627032437-14">[</span><span class="p" data-group-id="2627032437-14">]</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="rulette_select/2">
+    <div class="detail-header">
+    <a href="#rulette_select/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">rulette_select(population, n)</span>
+        
+      <div class="specs">
+          <pre>rulette_select(population :: [<a href="Chromosome.html#t:t/0">Chromosome.t</a>()], n :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: [
+  <a href="Chromosome.html#t:t/0">Chromosome.t</a>()
+]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Selects <code class="inline">n</code> elements from a <code class="inline">population</code> according to their fitness.</p>
+<p>If <a href="Chromosome.html"><code class="inline">Chromosome</code></a> has more fitness it has greater chance to be chosen.</p>
+  </section>
+</div>
+<div class="detail" id="select_most_fitting/2">
+    <div class="detail-header">
+    <a href="#select_most_fitting/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">select_most_fitting(population, n)</span>
+        
+      <div class="specs">
+          <pre>select_most_fitting(population :: [<a href="Chromosome.html#t:t/0">Chromosome.t</a>()], n :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: [
+  <a href="Chromosome.html#t:t/0">Chromosome.t</a>()
+]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Selects <code class="inline">n</code> most fitting <a href="Chromosome.html"><code class="inline">Chromosome</code></a>s from a <code class="inline">population</code>.</p>
+<p><a href="Chromosome.html"><code class="inline">Chromosome</code></a>s are sorted by fitness, ascending.</p>
+  </section>
+</div>
+        </section>
+
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-a0c90688fa.js"></script>
+  
+  </body>
+</html>
+

@@ -56,3 +56,42 @@ and call `GeneticAlgorithm.find_solution/2`:
 ```elixir
 GeneticAlgorithm.find_solution(fitness_f, settings)
 ```
+
+Result:
+```elixir
+%{
+  generations: 2,
+  most_fitting: [
+    %Chromosome{
+      fitness: 1.0,
+      genes: [
+        %Gene{v: 1},
+        %Gene{v: 2},
+        %Gene{v: 3},
+        %Gene{v: 4},
+        %Gene{v: 5}
+      ]
+    }, 
+    %Chromosome{
+      fitness: 1.0,
+      genes: [
+        %Gene{v: 1}, 
+        %Gene{v: 2},
+        %Gene{v: 3},
+        %Gene{v: 4},
+        %Gene{v: 5}
+      ]
+    },
+    %Chromosome{
+      fitness: 0.8,
+      genes: [
+        %Gene{v: 1},
+        %Gene{v: 1},
+        %Gene{v: 3},
+        %Gene{v: 4},
+        %Gene{v: 5}
+      ]
+    }
+  ]
+}
+```

@@ -18,7 +18,7 @@ mix do deps.get, compile
 ```
 mix docs
 ```
-Built docs can be accessed in `/doc` folder or viewed online [here](https://jakub-gonet.github.io/genetic-alchemy/readme.html). 
+Built docs can be accessed in `doc/` folder or viewed online [here](https://jakub-gonet.github.io/genetic-alchemy/readme.html). 
 
 ### Running tests and code style check
 ```

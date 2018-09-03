@@ -47,25 +47,9 @@ defmodule GeneticAlgorithm.Helpers do
   If `Chromosome` has more fitness it has greater chance to be chosen.
   """
   @spec rulette_select(population :: [Chromosome.t()], n :: non_neg_integer) :: [Chromosome.t()]
-  def rulette_select(population, n) do
-    _rulette_select(population, n, [])
-  end
-
-  defp _rulette_select(_, n, new_population)
-       when length(new_population) == n,
-       do: new_population
-
-  defp _rulette_select(population, n, new_population) when n > 0 do
-    choice = Enum.random(population)
-
-    new_population =
-      if :rand.uniform() <= choice.fitness do
-        [choice | new_population]
-      else
-        new_population
-      end
-
-    _rulette_select(population, n, new_population)
+  def rulette_select(population, n) when n > 0 do
+    packed = Enum.reduce(population, [], fn x, acc -> [{x, x.fitness} | acc] end)
+    Enum.map(1..n, fn _ -> random_based_on_fitness(packed) end)
   end
 
   @doc """

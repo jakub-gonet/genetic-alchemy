@@ -15,19 +15,19 @@ defmodule GeneticAlgorithm.Helpers do
 
   ## Examples
   ```
-  iex> GeneticAlgorithm.Helpers.populate(2, [0], 1, fn _ -> 1.0 end)
+  iex> GeneticAlgorithm.Helpers.populate(2, [{[0], 1.0}], 1, fn _ -> 1.0 end)
   [
     %Chromosome{fitness: 1.0, genes: [%Gene{v: 0}]},
     %Chromosome{fitness: 1.0, genes: [%Gene{v: 0}]}
   ]
 
-  iex> GeneticAlgorithm.Helpers.populate(0, [0], 1, fn _ -> 1.0 end)
+  iex> GeneticAlgorithm.Helpers.populate(0, [{[0], 1.0}], 1, fn _ -> 1.0 end)
   []
   ```
   """
   @spec populate(
           size :: non_neg_integer,
-          allowed_values :: list,
+          allowed_values :: allowed_v,
           length :: non_neg_integer,
           fitness_func :: fitness_f
         ) :: [Chromosome.t()]
@@ -35,7 +35,8 @@ defmodule GeneticAlgorithm.Helpers do
     1..size
     |> Flow.from_enumerable()
     |> Flow.reduce(fn -> [] end, fn _, acc ->
-      [generate_random_chromosome(allowed_values, length, fitness_func) | acc]
+      one_of_allowed_vals = random_based_on_fitness(allowed_values)
+      [generate_random_chromosome(one_of_allowed_vals, length, fitness_func) | acc]
     end)
     |> Enum.to_list()
   end
@@ -82,14 +83,16 @@ defmodule GeneticAlgorithm.Helpers do
   """
   @spec mutate(
           population :: [Chromosome.t()],
-          allowed_values :: list,
+          allowed_values :: allowed_v,
           chance :: float,
           fitness_func :: fitness_f
         ) :: [Chromosome.t()]
   def mutate(population, allowed_values, chance, fitness_func) do
+    one_of_allowed_vals = random_based_on_fitness(allowed_values)
+
     population
     |> Flow.from_enumerable()
-    |> Flow.map(&mutate_one(&1, allowed_values, chance, fitness_func))
+    |> Flow.map(&mutate_one(&1, one_of_allowed_vals, chance, fitness_func))
     |> Enum.to_list()
   end
 

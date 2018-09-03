@@ -162,4 +162,22 @@ defmodule GeneticAlgorithm.Helpers do
 
     create_chromosome(genes, fitness_func)
   end
+
+  defp random_based_on_fitness(list) do
+    total_p =
+      list
+      |> Enum.map(fn {_, p} -> p end)
+      |> Enum.sum()
+
+    random = :rand.uniform() * total_p
+
+    try_random = fn x, acc ->
+      {val, p} = x
+      acc = acc + p
+
+      if random > acc, do: {:cont, acc}, else: {:halt, val}
+    end
+
+    Enum.reduce_while(list, 0, try_random)
+  end
 end

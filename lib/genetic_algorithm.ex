@@ -6,7 +6,7 @@ defmodule GeneticAlgorithm do
   Those are options with their default values:
   ```
   %{
-    gene_values: [0, 1],  # values used by Gene
+    gene_values: [{[0, 1], 1.0}],  # values used by Gene
     length: 5,            # length of a Chromosome
     chrom_in_gen: 1000,   # population size
     min_fitness: 0.9,     # minimum fitness allowing to stop
@@ -27,7 +27,7 @@ defmodule GeneticAlgorithm do
   import GeneticAlgorithm.Helpers
 
   @defaults %{
-    gene_values: [0, 1],
+    gene_values: [{[0, 1], 1.0}],
     length: 5,
     chrom_in_gen: 1000,
     min_fitness: 0.9,
@@ -41,7 +41,7 @@ defmodule GeneticAlgorithm do
   For list of available options see `GeneticAlgorithm` documentation.
   """
   @spec find_solution(fitness_func :: fitness_f, opts :: keyword) :: solution
-  def(find_solution(fitness_func, opts \\ [])) do
+  def find_solution(fitness_func, opts \\ []) do
     _find_solution(
       generate_initial_population(fitness_func, opts),
       fitness_func,

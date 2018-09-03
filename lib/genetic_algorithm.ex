@@ -16,7 +16,7 @@ defmodule GeneticAlgorithm do
     ```
   """
   @typedoc """
-  `fitness_f` describes fitness function which should be passed to various functions.
+  `fitness_f` describes fitness function which can be passed to various functions.
   """
   @type fitness_f :: function(genes :: [Genes.t()]) :: float
 

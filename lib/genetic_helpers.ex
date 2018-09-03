@@ -2,7 +2,17 @@ defmodule GeneticAlgorithm.Helpers do
   @moduledoc """
   This module is grouping functions used to generate, crossover and mutate genetic algoritm chromosomes population.
   """
+
+  @typedoc """
+  `fitness_f` describes fitness function which can be passed to various functions.
+  """
   @type fitness_f :: function(genes :: [Genes.t()]) :: float
+
+  @typedoc """
+  `allowed_v` describes allowed gene values which can be passed to various functions.
+  It's basic form looks like this:
+  `[{value, propability}]`
+  """
   @type allowed_v :: [{any(), number()}]
 
   @doc """

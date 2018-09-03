@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.1">
     <title>GeneticAlgorithm – Genetic Algorithm v1.0.0</title>
     <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
-    <script src="dist/sidebar_items-7d05b3ce0d.js"></script>
+    <script src="dist/sidebar_items-d2a1f4d3d0.js"></script>
     
   </head>
   <body data-type="modules">
@@ -67,21 +67,21 @@ GeneticAlgorithm
 
 
         <section id="moduledoc">
-<p>This module is grouping functions from <a href="GeneticAlgorithm.Helpers.html"><code class="inline">GeneticAlgorithm.Helpers</code></a> to easily find the solution of a given problem. </p>
+<p>This module is grouping functions from <a href="GeneticAlgorithm.Helpers.html"><code class="inline">GeneticAlgorithm.Helpers</code></a> to easily find the solution of a given problem.</p>
 <h2 id="module-options" class="section-heading">
   <a href="#module-options" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Options
 </h2>
 
 <p>Those are options with their default values:</p>
-<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="8838628996-1">%{</span><span class="w">
-  </span><span class="ss">gene_values</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8838628996-2">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="8838628996-2">]</span><span class="p">,</span><span class="w">  </span><span class="c1"># values used by Gene</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="7546325854-1">%{</span><span class="w">
+  </span><span class="ss">gene_values</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7546325854-2">[</span><span class="p" data-group-id="7546325854-3">{</span><span class="p" data-group-id="7546325854-4">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="7546325854-4">]</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p" data-group-id="7546325854-3">}</span><span class="p" data-group-id="7546325854-2">]</span><span class="p">,</span><span class="w">  </span><span class="c1"># values used by Gene</span><span class="w">
   </span><span class="ss">length</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">            </span><span class="c1"># length of a Chromosome</span><span class="w">
   </span><span class="ss">chrom_in_gen</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">   </span><span class="c1"># population size</span><span class="w">
   </span><span class="ss">min_fitness</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w">     </span><span class="c1"># minimum fitness allowing to stop</span><span class="w">
   </span><span class="ss">mutation_chance</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="c1"># mutation chance</span><span class="w">
   </span><span class="ss">shown_chrom</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">        </span><span class="c1"># number of Chromosomes returned as solution</span><span class="w">
-</span><span class="p" data-group-id="8838628996-1">}</span></code></pre>
+</span><span class="p" data-group-id="7546325854-1">}</span></code></pre>
         </section>
 
         <section id="summary" class="details-list">
@@ -100,7 +100,7 @@ GeneticAlgorithm
   <div class="summary-signature">
     <a href="#t:fitness_f/0">fitness_f()</a>
   </div>
-    <div class="summary-synopsis"><p><code class="inline">fitness_f</code> describes fitness function which should be passed to various functions</p>
+    <div class="summary-synopsis"><p><code class="inline">fitness_f</code> describes fitness function which can be passed to various functions</p>
 </div>
 </div>
 <div class="summary-row">
@@ -167,7 +167,7 @@ GeneticAlgorithm
       </div>
   </div>
   <section class="docstring">
-<p><code class="inline">fitness_f</code> describes fitness function which should be passed to various functions.</p>
+<p><code class="inline">fitness_f</code> describes fitness function which can be passed to various functions.</p>
   </section>
 </div>
 <div class="detail" id="t:solution/0">

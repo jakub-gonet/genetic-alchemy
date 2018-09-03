@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.1">
     <title>GeneticAlgorithm.Helpers – Genetic Algorithm v1.0.0</title>
     <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
-    <script src="dist/sidebar_items-7d05b3ce0d.js"></script>
+    <script src="dist/sidebar_items-d2a1f4d3d0.js"></script>
     
   </head>
   <body data-type="modules">
@@ -84,8 +84,19 @@ GeneticAlgorithm.Helpers
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#t:allowed_v/0">allowed_v()</a>
+  </div>
+    <div class="summary-synopsis"><p><code class="inline">allowed_v</code> describes allowed gene values which can be passed to various functions.
+It’s basic form looks like this:
+<code class="inline">[{value, propability}]</code></p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#t:fitness_f/0">fitness_f()</a>
   </div>
+    <div class="summary-synopsis"><p><code class="inline">fitness_f</code> describes fitness function which can be passed to various functions</p>
+</div>
 </div>
   </div>
           
@@ -141,6 +152,28 @@ GeneticAlgorithm.Helpers
             Types
           </h1>
           <div class="types-list">
+<div class="detail" id="t:allowed_v/0">
+    <div class="detail-header">
+    <a href="#t:allowed_v/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">allowed_v()</span>
+      <a href="https://github.com/jakub-gonet/genetic-alchemy/blob/master/lib/genetic_helpers.ex#L16" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>allowed_v() :: [{<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>()}]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p><code class="inline">allowed_v</code> describes allowed gene values which can be passed to various functions.
+It’s basic form looks like this:
+<code class="inline">[{value, propability}]</code></p>
+  </section>
+</div>
 <div class="detail" id="t:fitness_f/0">
     <div class="detail-header">
     <a href="#t:fitness_f/0" class="detail-link" title="Link to this type">
@@ -148,7 +181,7 @@ GeneticAlgorithm.Helpers
       <span class="sr-only">Link to this type</span>
     </a>
     <span class="signature">fitness_f()</span>
-      <a href="https://github.com/jakub-gonet/genetic-alchemy/blob/master/lib/genetic_helpers.ex#L5" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/jakub-gonet/genetic-alchemy/blob/master/lib/genetic_helpers.ex#L9" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -158,6 +191,7 @@ GeneticAlgorithm.Helpers
       </div>
   </div>
   <section class="docstring">
+<p><code class="inline">fitness_f</code> describes fitness function which can be passed to various functions.</p>
   </section>
 </div>
           </div>
@@ -179,7 +213,7 @@ GeneticAlgorithm.Helpers
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">crossover(population, fitness_func)</span>
-      <a href="https://github.com/jakub-gonet/genetic-alchemy/blob/master/lib/genetic_helpers.ex#L77" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/jakub-gonet/genetic-alchemy/blob/master/lib/genetic_helpers.ex#L73" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -202,7 +236,7 @@ GeneticAlgorithm.Helpers
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">mutate(population, allowed_values, chance, fitness_func)</span>
-      <a href="https://github.com/jakub-gonet/genetic-alchemy/blob/master/lib/genetic_helpers.ex#L104" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/jakub-gonet/genetic-alchemy/blob/master/lib/genetic_helpers.ex#L100" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -210,7 +244,7 @@ GeneticAlgorithm.Helpers
       <div class="specs">
           <pre>mutate(
   population :: [<a href="Chromosome.html#t:t/0">Chromosome.t</a>()],
-  allowed_values :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(),
+  allowed_values :: <a href="#t:allowed_v/0">allowed_v</a>(),
   chance :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(),
   fitness_func :: <a href="#t:fitness_f/0">fitness_f</a>()
 ) :: [<a href="Chromosome.html#t:t/0">Chromosome.t</a>()]</pre>
@@ -223,9 +257,9 @@ GeneticAlgorithm.Helpers
   Example
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5423655710-1">[</span><span class="p" data-group-id="5423655710-2">%</span><span class="nc" data-group-id="5423655710-2">Chromosome</span><span class="p" data-group-id="5423655710-2">{</span><span class="ss">fitness</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="ss">genes</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5423655710-3">[</span><span class="p" data-group-id="5423655710-4">%</span><span class="nc" data-group-id="5423655710-4">Gene</span><span class="p" data-group-id="5423655710-4">{</span><span class="ss">v</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="5423655710-4">}</span><span class="p" data-group-id="5423655710-3">]</span><span class="p" data-group-id="5423655710-2">}</span><span class="p" data-group-id="5423655710-1">]</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">GeneticAlgorithm.Helpers</span><span class="o">.</span><span class="n">mutate</span><span class="p" data-group-id="5423655710-5">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5423655710-6">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="5423655710-6">]</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="5423655710-7">fn</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="k" data-group-id="5423655710-7">end</span><span class="p" data-group-id="5423655710-5">)</span><span class="w">
-</span><span class="p" data-group-id="5423655710-8">[</span><span class="p" data-group-id="5423655710-9">%</span><span class="nc" data-group-id="5423655710-9">Chromosome</span><span class="p" data-group-id="5423655710-9">{</span><span class="ss">fitness</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="ss">genes</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5423655710-10">[</span><span class="p" data-group-id="5423655710-11">%</span><span class="nc" data-group-id="5423655710-11">Gene</span><span class="p" data-group-id="5423655710-11">{</span><span class="ss">v</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="5423655710-11">}</span><span class="p" data-group-id="5423655710-10">]</span><span class="p" data-group-id="5423655710-9">}</span><span class="p" data-group-id="5423655710-8">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="3902161810-1">[</span><span class="p" data-group-id="3902161810-2">%</span><span class="nc" data-group-id="3902161810-2">Chromosome</span><span class="p" data-group-id="3902161810-2">{</span><span class="ss">fitness</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="ss">genes</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3902161810-3">[</span><span class="p" data-group-id="3902161810-4">%</span><span class="nc" data-group-id="3902161810-4">Gene</span><span class="p" data-group-id="3902161810-4">{</span><span class="ss">v</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="3902161810-4">}</span><span class="p" data-group-id="3902161810-3">]</span><span class="p" data-group-id="3902161810-2">}</span><span class="p" data-group-id="3902161810-1">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">GeneticAlgorithm.Helpers</span><span class="o">.</span><span class="n">mutate</span><span class="p" data-group-id="3902161810-5">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3902161810-6">[</span><span class="p" data-group-id="3902161810-7">{</span><span class="p" data-group-id="3902161810-8">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="3902161810-8">]</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="3902161810-7">}</span><span class="p" data-group-id="3902161810-6">]</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="3902161810-9">fn</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="k" data-group-id="3902161810-9">end</span><span class="p" data-group-id="3902161810-5">)</span><span class="w">
+</span><span class="p" data-group-id="3902161810-10">[</span><span class="p" data-group-id="3902161810-11">%</span><span class="nc" data-group-id="3902161810-11">Chromosome</span><span class="p" data-group-id="3902161810-11">{</span><span class="ss">fitness</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="ss">genes</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3902161810-12">[</span><span class="p" data-group-id="3902161810-13">%</span><span class="nc" data-group-id="3902161810-13">Gene</span><span class="p" data-group-id="3902161810-13">{</span><span class="ss">v</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="3902161810-13">}</span><span class="p" data-group-id="3902161810-12">]</span><span class="p" data-group-id="3902161810-11">}</span><span class="p" data-group-id="3902161810-10">]</span></code></pre>
   </section>
 </div>
 <div class="detail" id="populate/4">
@@ -235,7 +269,7 @@ GeneticAlgorithm.Helpers
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">populate(size, allowed_values, length, fitness_func)</span>
-      <a href="https://github.com/jakub-gonet/genetic-alchemy/blob/master/lib/genetic_helpers.ex#L42" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/jakub-gonet/genetic-alchemy/blob/master/lib/genetic_helpers.ex#L54" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -243,7 +277,7 @@ GeneticAlgorithm.Helpers
       <div class="specs">
           <pre>populate(
   size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
-  allowed_values :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(),
+  allowed_values :: <a href="#t:allowed_v/0">allowed_v</a>(),
   length :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
   fitness_func :: <a href="#t:fitness_f/0">fitness_f</a>()
 ) :: [<a href="Chromosome.html#t:t/0">Chromosome.t</a>()]</pre>
@@ -252,7 +286,7 @@ GeneticAlgorithm.Helpers
   <section class="docstring">
 <p>Generates new random population with given parameters.</p>
 <ul>
-<li><code class="inline">size</code> - population size 
+<li><code class="inline">size</code> - population size
 </li>
 <li><code class="inline">allowed_values</code> - values used as <a href="Gene.html"><code class="inline">Gene</code></a> values
 </li>
@@ -266,14 +300,14 @@ GeneticAlgorithm.Helpers
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">GeneticAlgorithm.Helpers</span><span class="o">.</span><span class="n">populate</span><span class="p" data-group-id="5722776974-1">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5722776974-2">[</span><span class="mi">0</span><span class="p" data-group-id="5722776974-2">]</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="5722776974-3">fn</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="k" data-group-id="5722776974-3">end</span><span class="p" data-group-id="5722776974-1">)</span><span class="w">
-</span><span class="p" data-group-id="5722776974-4">[</span><span class="w">
-  </span><span class="p" data-group-id="5722776974-5">%</span><span class="nc" data-group-id="5722776974-5">Chromosome</span><span class="p" data-group-id="5722776974-5">{</span><span class="ss">fitness</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="ss">genes</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5722776974-6">[</span><span class="p" data-group-id="5722776974-7">%</span><span class="nc" data-group-id="5722776974-7">Gene</span><span class="p" data-group-id="5722776974-7">{</span><span class="ss">v</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="5722776974-7">}</span><span class="p" data-group-id="5722776974-6">]</span><span class="p" data-group-id="5722776974-5">}</span><span class="p">,</span><span class="w">
-  </span><span class="p" data-group-id="5722776974-8">%</span><span class="nc" data-group-id="5722776974-8">Chromosome</span><span class="p" data-group-id="5722776974-8">{</span><span class="ss">fitness</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="ss">genes</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5722776974-9">[</span><span class="p" data-group-id="5722776974-10">%</span><span class="nc" data-group-id="5722776974-10">Gene</span><span class="p" data-group-id="5722776974-10">{</span><span class="ss">v</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="5722776974-10">}</span><span class="p" data-group-id="5722776974-9">]</span><span class="p" data-group-id="5722776974-8">}</span><span class="w">
-</span><span class="p" data-group-id="5722776974-4">]</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">GeneticAlgorithm.Helpers</span><span class="o">.</span><span class="n">populate</span><span class="p" data-group-id="8342266198-1">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8342266198-2">[</span><span class="p" data-group-id="8342266198-3">{</span><span class="p" data-group-id="8342266198-4">[</span><span class="mi">0</span><span class="p" data-group-id="8342266198-4">]</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p" data-group-id="8342266198-3">}</span><span class="p" data-group-id="8342266198-2">]</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="8342266198-5">fn</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="k" data-group-id="8342266198-5">end</span><span class="p" data-group-id="8342266198-1">)</span><span class="w">
+</span><span class="p" data-group-id="8342266198-6">[</span><span class="w">
+  </span><span class="p" data-group-id="8342266198-7">%</span><span class="nc" data-group-id="8342266198-7">Chromosome</span><span class="p" data-group-id="8342266198-7">{</span><span class="ss">fitness</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="ss">genes</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8342266198-8">[</span><span class="p" data-group-id="8342266198-9">%</span><span class="nc" data-group-id="8342266198-9">Gene</span><span class="p" data-group-id="8342266198-9">{</span><span class="ss">v</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="8342266198-9">}</span><span class="p" data-group-id="8342266198-8">]</span><span class="p" data-group-id="8342266198-7">}</span><span class="p">,</span><span class="w">
+  </span><span class="p" data-group-id="8342266198-10">%</span><span class="nc" data-group-id="8342266198-10">Chromosome</span><span class="p" data-group-id="8342266198-10">{</span><span class="ss">fitness</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="ss">genes</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8342266198-11">[</span><span class="p" data-group-id="8342266198-12">%</span><span class="nc" data-group-id="8342266198-12">Gene</span><span class="p" data-group-id="8342266198-12">{</span><span class="ss">v</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="8342266198-12">}</span><span class="p" data-group-id="8342266198-11">]</span><span class="p" data-group-id="8342266198-10">}</span><span class="w">
+</span><span class="p" data-group-id="8342266198-6">]</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">GeneticAlgorithm.Helpers</span><span class="o">.</span><span class="n">populate</span><span class="p" data-group-id="5722776974-11">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5722776974-12">[</span><span class="mi">0</span><span class="p" data-group-id="5722776974-12">]</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="5722776974-13">fn</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="k" data-group-id="5722776974-13">end</span><span class="p" data-group-id="5722776974-11">)</span><span class="w">
-</span><span class="p" data-group-id="5722776974-14">[</span><span class="p" data-group-id="5722776974-14">]</span></code></pre>
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">GeneticAlgorithm.Helpers</span><span class="o">.</span><span class="n">populate</span><span class="p" data-group-id="8342266198-13">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8342266198-14">[</span><span class="p" data-group-id="8342266198-15">{</span><span class="p" data-group-id="8342266198-16">[</span><span class="mi">0</span><span class="p" data-group-id="8342266198-16">]</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p" data-group-id="8342266198-15">}</span><span class="p" data-group-id="8342266198-14">]</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="8342266198-17">fn</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="k" data-group-id="8342266198-17">end</span><span class="p" data-group-id="8342266198-13">)</span><span class="w">
+</span><span class="p" data-group-id="8342266198-18">[</span><span class="p" data-group-id="8342266198-18">]</span></code></pre>
   </section>
 </div>
 <div class="detail" id="rulette_select/2">
@@ -283,7 +317,7 @@ GeneticAlgorithm.Helpers
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">rulette_select(population, n)</span>
-      <a href="https://github.com/jakub-gonet/genetic-alchemy/blob/master/lib/genetic_helpers.ex#L50" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/jakub-gonet/genetic-alchemy/blob/master/lib/genetic_helpers.ex#L62" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -306,7 +340,7 @@ GeneticAlgorithm.Helpers
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">select_most_fitting(population, n)</span>
-      <a href="https://github.com/jakub-gonet/genetic-alchemy/blob/master/lib/genetic_helpers.ex#L119" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/jakub-gonet/genetic-alchemy/blob/master/lib/genetic_helpers.ex#L117" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>

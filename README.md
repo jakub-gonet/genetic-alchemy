@@ -29,9 +29,10 @@ mix test --cover && mix credo --strict
 ```
 iex -S mix
 ```
-This command load Elixir's REPL with project modules loaded.
-To try it out just define fitness function:
+This command load Elixir's REPL with project modules loaded.  
+Example:
 ```elixir
+# Define fitness function:
 fitness_f = fn genes ->
   desired = [%Gene{v: 1}, %Gene{v: 2}, %Gene{v: 3}, %Gene{v: 4}, %Gene{v: 5}]
     count = Enum.count(genes)
@@ -43,17 +44,15 @@ fitness_f = fn genes ->
 
     fitting / count
 end
-```
-set algoritm options:
-```elixir
+
+# Set algoritm options:
 settings = [
   gene_values: [{Enum.to_list(1..5), 1.0}],
   length: 5,
   min_fitness: 1.0
 ]
-```
-and call `GeneticAlgorithm.find_solution/2`:
-```elixir
+
+# And call `GeneticAlgorithm.find_solution/2`:
 GeneticAlgorithm.find_solution(fitness_f, settings)
 ```
 

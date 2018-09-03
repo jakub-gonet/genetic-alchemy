@@ -8,7 +8,7 @@ defmodule GeneticAlgorithm.Helpers do
   @doc """
   Generates new random population with given parameters.
 
-  + `size` - population size 
+  + `size` - population size
   + `allowed_values` - values used as `Gene` values
   + `length` - amount of `Gene`s in `Chromosome`
   + `fitness_func` - function calculating `Chromosome` fitness
@@ -77,7 +77,7 @@ defmodule GeneticAlgorithm.Helpers do
   ## Example
   ```
   iex> p = [%Chromosome{fitness: 1.0, genes: [%Gene{v: 0}]}]
-  iex> GeneticAlgorithm.Helpers.mutate(p, [0, 1], 1.0, fn _ -> 1.0 end)
+  iex> GeneticAlgorithm.Helpers.mutate(p, [{[0, 1], 1}], 1.0, fn _ -> 1.0 end)
   [%Chromosome{fitness: 1.0, genes: [%Gene{v: 1}]}]
   ```
   """

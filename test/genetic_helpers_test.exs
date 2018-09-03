@@ -8,25 +8,26 @@ defmodule GeneticAlgoritm.HelpersTest do
     %Chromosome{genes: [%Gene{v: 10}, %Gene{v: 20}, %Gene{v: 30}], fitness: 1.0},
     %Chromosome{genes: [%Gene{v: 100}, %Gene{v: 200}, %Gene{v: 300}], fitness: 1.0}
   ]
+  @default_allowed_values [{[0], 1.0}]
 
   def const_fitness_f(_), do: 1.0
 
   describe "GeneticAlgorithm.Helpers.populate/3" do
     test "create population" do
-      assert Helpers.populate(2, Enum.to_list(1..1), 2, &const_fitness_f/1) == [
-               %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 1}], fitness: 1.0},
-               %Chromosome{genes: [%Gene{v: 1}, %Gene{v: 1}], fitness: 1.0}
+      assert Helpers.populate(2, @default_allowed_values, 2, &const_fitness_f/1) == [
+               %Chromosome{genes: [%Gene{v: 0}, %Gene{v: 0}], fitness: 1.0},
+               %Chromosome{genes: [%Gene{v: 0}, %Gene{v: 0}], fitness: 1.0}
              ]
     end
 
     test "create population with 0 chromosomes" do
-      assert Helpers.populate(0, Enum.to_list(1..1), 2, &const_fitness_f/1) == []
+      assert Helpers.populate(0, @default_allowed_values, 2, &const_fitness_f/1) == []
     end
 
     test "create population with negative amount of chromosomes or chromosomes length" do
-      assert Helpers.populate(-5, Enum.to_list(1..1), 2, &const_fitness_f/1) == []
+      assert Helpers.populate(-5, @default_allowed_values, 2, &const_fitness_f/1) == []
 
-      assert Helpers.populate(2, Enum.to_list(1..1), -2, &const_fitness_f/1) == [
+      assert Helpers.populate(2, @default_allowed_values, -2, &const_fitness_f/1) == [
                %Chromosome{fitness: 1.0, genes: []},
                %Chromosome{fitness: 1.0, genes: []}
              ]
@@ -60,13 +61,17 @@ defmodule GeneticAlgoritm.HelpersTest do
 
   describe "GeneticAlgorithm.Helpers.mutate/3" do
     test "0% chance doesn't change any chromosome" do
-      assert Helpers.mutate(@template_population, [1], 0, &const_fitness_f/1) ==
-               @template_population
+      assert Helpers.mutate(
+               @template_population,
+               @default_allowed_values,
+               0,
+               &const_fitness_f/1
+             ) == @template_population
     end
 
     test "100% chance always change every chromosome" do
       assert @template_population
-             |> Helpers.mutate([0], 1, &const_fitness_f/1)
+             |> Helpers.mutate(@default_allowed_values, 1, &const_fitness_f/1)
              |> Enum.map(& &1.genes)
              |> Enum.all?(&(%Gene{v: 0} in &1))
     end

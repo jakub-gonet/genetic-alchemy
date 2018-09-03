@@ -12,7 +12,7 @@ defmodule GeneticAlgoritmSolutionTest do
 
       opts = [
         chrom_in_gen: 10,
-        gene_values: Enum.to_list(1..5),
+        gene_values: [{Enum.to_list(1..5), 1.0}],
         length: 5,
         min_fitness: 1.0,
         mutation_chance: 0.1
@@ -26,11 +26,11 @@ defmodule GeneticAlgoritmSolutionTest do
 
     test "find math operation evaluating to given number" do
       opts = [
-        chrom_in_gen: 100,
-        gene_values: Enum.to_list(1..25) ++ [&+/2, &-/2, &*/2, &//2],
+        chrom_in_gen: 2000,
+        gene_values: [{Enum.to_list(1..25), 0.5}, {[&+/2, &-/2, &*/2, &//2], 0.5}],
         length: 3,
         min_fitness: 1.0,
-        mutation_chance: 0.2
+        mutation_chance: 0.15
       ]
 
       solution = GeneticAlgorithm.find_solution(&reverse_calculator_fitness/1, opts)

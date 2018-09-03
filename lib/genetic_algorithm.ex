@@ -1,6 +1,6 @@
 defmodule GeneticAlgorithm do
   @moduledoc """
-  This module is grouping functions from `GeneticAlgorithm.Helpers` to easily find the solution of a given problem. 
+  This module is grouping functions from `GeneticAlgorithm.Helpers` to easily find the solution of a given problem.
 
   ## Options
   Those are options with their default values:

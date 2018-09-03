@@ -47,7 +47,7 @@ end
 set algoritm options:
 ```elixir
 settings = [
-  gene_values: Enum.to_list(1..5),
+  gene_values: [{Enum.to_list(1..5), 1.0}],
   length: 5,
   min_fitness: 1.0
 ]

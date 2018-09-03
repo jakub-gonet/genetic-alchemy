@@ -3,6 +3,7 @@ defmodule GeneticAlgorithm.Helpers do
   This module is grouping functions used to generate, crossover and mutate genetic algoritm chromosomes population.
   """
   @type fitness_f :: function(genes :: [Genes.t()]) :: float
+  @type allowed_v :: [{any(), number()}]
 
   @doc """
   Generates new random population with given parameters.
